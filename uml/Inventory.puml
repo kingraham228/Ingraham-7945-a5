@@ -1,0 +1,40 @@
+@startuml
+class App{
+start()
+main()
+}
+
+class WindowController{
+
+}
+
+class DialogManager{
+
+}
+
+class FileManager{
+
+}
+
+class Inventory{
+- catalog: observableList<Item>
+}
+
+class Item{
+-name: String
+-serialNumber: String
+-value: BigDecimal
+
++getName()
++getSerialNumber()
++getValue()
+
+}
+
+openfx.org.Application <|-- App
+App -- WindowController
+WindowController o-- DialogManager
+WindowController o-- FileManager
+WindowController o-- Inventory
+Inventory *-- Item
+@enduml
