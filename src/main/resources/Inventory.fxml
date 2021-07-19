@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#mOpen" text="Open" />
+              <MenuItem mnemonicParsing="false" onAction="#mSave" text="Save as..." />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Search">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#mSearchName" text="Search by Name" />
+              <MenuItem mnemonicParsing="false" onAction="#mSearchSerial" text="Search by Serial Number" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <TableView fx:id="tableView" editable="true" onInputMethodTextChanged="#tvEdit" onSort="#tvSort" prefHeight="375.0" prefWidth="442.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="tcValue" prefWidth="106.0" text="Value" />
+          <TableColumn fx:id="tcSerial" prefWidth="136.0" text="Serial Number" />
+            <TableColumn fx:id="tcName" prefWidth="157.0" text="Name" />
+        </columns>
+      </TableView>
+   </center>
+   <left>
+      <VBox prefHeight="375.0" prefWidth="26.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <VBox prefHeight="375.0" prefWidth="116.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="106.0" prefWidth="116.0" />
+            <HBox prefHeight="79.0" prefWidth="116.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#bAddItem" text="Add Item">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="85.0" prefWidth="116.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#bEditItem" text="Edit Item">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" onAction="#bDeleteItem" text="Delete Item">
+               <VBox.margin>
+                  <Insets left="15.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </right>
+</BorderPane>

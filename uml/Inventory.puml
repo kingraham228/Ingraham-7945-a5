@@ -5,6 +5,9 @@ main()
 }
 
 class WindowController{
+-DialogManager
+-FileManager
+-Inventory
 
 }
 
@@ -13,11 +16,22 @@ class DialogManager{
 }
 
 class FileManager{
++saveInventory()
++loadInventory()
 
 }
 
 class Inventory{
 - catalog: observableList<Item>
+- InputValidator
+
++addItem()
++removeItem()
++editItem()
++sortItems()
++searchSerial()
++searchName()
++getCatalog()
 }
 
 class Item{
@@ -31,10 +45,18 @@ class Item{
 
 }
 
+class InputValidator{
++ formatDollars()
++ uniqueSerial()
++ formatSerial()
++ nameLength()
+}
+
 openfx.org.Application <|-- App
 App -- WindowController
 WindowController o-- DialogManager
 WindowController o-- FileManager
 WindowController o-- Inventory
 Inventory *-- Item
+Inventory *-- InputValidator
 @enduml
