@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.WindowController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -34,14 +33,14 @@
    <center>
       <TableView fx:id="tableView" editable="true" onInputMethodTextChanged="#tvEdit" onSort="#tvSort" prefHeight="375.0" prefWidth="442.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="tcValue" prefWidth="106.0" text="Value" />
-          <TableColumn fx:id="tcSerial" prefWidth="136.0" text="Serial Number" />
-            <TableColumn fx:id="tcName" prefWidth="157.0" text="Name" />
+          <TableColumn fx:id="tcValue" prefWidth="123.0" text="Value" />
+          <TableColumn fx:id="tcSerial" prefWidth="158.0" text="Serial Number" />
+            <TableColumn fx:id="tcName" prefWidth="182.0" text="Name" />
         </columns>
       </TableView>
    </center>
    <left>
-      <VBox prefHeight="375.0" prefWidth="26.0" BorderPane.alignment="CENTER" />
+      <VBox prefHeight="355.0" prefWidth="20.0" BorderPane.alignment="CENTER" />
    </left>
    <right>
       <VBox prefHeight="375.0" prefWidth="116.0" BorderPane.alignment="CENTER">
@@ -73,4 +72,7 @@
          </children>
       </VBox>
    </right>
+   <bottom>
+      <HBox prefHeight="20.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>
