@@ -36,6 +36,9 @@ class Item{
 -serialNumber: String
 -value: BigDecimal
 
++setName(String)
++setSerialNumber(String)
++setValue(BigDecimal)
 +getName()
 +getSerialNumber()
 +getValue()

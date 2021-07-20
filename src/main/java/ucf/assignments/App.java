@@ -1,5 +1,8 @@
 package ucf.assignments;
-
+/*
+ *  UCF COP3330 Summer 2021 Assignment 5 Solution
+ *  Copyright 2021 Kate Ingraham
+ */
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,10 +10,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.util.Objects;
 
-/*
- *  UCF COP3330 Summer 2021 Assignment 5 Solution
- *  Copyright 2021 Kate Ingraham
- */
+
 public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception{
