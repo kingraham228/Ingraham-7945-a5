@@ -1,5 +1,7 @@
 package ucf.assignments;
 
+import javafx.beans.property.SimpleStringProperty;
+
 import java.math.BigDecimal;
 
 /*
@@ -7,37 +9,49 @@ import java.math.BigDecimal;
  *  Copyright 2021 Kate Ingraham
  */
 public class Item {
-    private String name;
-    private String serialNumber;
-    private BigDecimal value;
+    private SimpleStringProperty name;
+    private SimpleStringProperty serialNumber;
+    private SimpleStringProperty value;
 
-    public Item(String name, String serialNumber, BigDecimal value) {
-        this.name = name;
-        this.serialNumber = serialNumber;
-        this.value = value;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSerialNumber(String serialNumber) {
-        this.serialNumber = serialNumber;
-    }
-
-    public void setValue(BigDecimal value) {
-        this.value = value;
+    public Item(String name, String serialNumber, String value) {
+        this.name = new SimpleStringProperty(name);
+        this.serialNumber = new SimpleStringProperty(serialNumber);
+        this.value = new SimpleStringProperty(value);
     }
 
     public String getName() {
+        return name.get();
+    }
+
+    public SimpleStringProperty nameProperty() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name.set(name);
+    }
+
     public String getSerialNumber() {
+        return serialNumber.get();
+    }
+
+    public SimpleStringProperty serialNumberProperty() {
         return serialNumber;
     }
 
-    public BigDecimal getValue() {
+    public void setSerialNumber(String serialNumber) {
+        this.serialNumber.set(serialNumber);
+    }
+
+    public String getValue() {
+        return value.get();
+    }
+
+    public SimpleStringProperty valueProperty() {
         return value;
+    }
+
+    public void setValue(String value) {
+        this.value.set(value);
     }
 }

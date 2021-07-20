@@ -8,6 +8,9 @@ class WindowController{
 - dm: DialogManager
 - fm: FileManager
 - userInventory: Inventory
+- catalog: ObservableList<Item>
+
++updateTableView()
 }
 
 class DialogManager{
@@ -19,7 +22,7 @@ class FileManager{
 }
 
 class Inventory{
-- catalog: observableList<Item>
+- catalog: ArrayList<Item>
 - iv: InputValidator
 
 +addItem()
