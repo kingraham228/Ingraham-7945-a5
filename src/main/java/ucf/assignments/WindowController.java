@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.SortEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.InputMethodEvent;
 
@@ -22,24 +23,23 @@ import java.util.ResourceBundle;
 
 public class WindowController implements Initializable {
 
-
-
-    private Inventory userInventory = new Inventory();
-
-    //Set up table view
-    private ObservableList<Item> catalog;
+    @FXML
+    public TextField tfValue;
+    @FXML
+    public TextField tfSerial;
+    @FXML
+    public TextField tfName;
     @FXML
     private TableView<Item> tableView;
-
-    //Declare columns
     @FXML
     public TableColumn<Item, String> tcValue;
-
     @FXML
     public TableColumn<Item,String> tcSerial;
-
     @FXML
     public TableColumn<Item,String> tcName;
+
+    private Inventory userInventory = new Inventory();
+    private ObservableList<Item> catalog;
 
     @FXML
     public void mOpen(ActionEvent actionEvent) {
@@ -66,10 +66,7 @@ public class WindowController implements Initializable {
 
     }
 
-    @FXML
-    public void bEditItem(ActionEvent actionEvent) {
-    }
-
+    
     @FXML
     public void bDeleteItem(ActionEvent actionEvent) {
     }

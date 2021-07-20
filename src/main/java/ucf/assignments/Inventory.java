@@ -1,13 +1,13 @@
 package ucf.assignments;
-
-import javafx.collections.ObservableList;
-
-import java.util.ArrayList;
-
 /*
  *  UCF COP3330 Summer 2021 Assignment 5 Solution
  *  Copyright 2021 Kate Ingraham
  */
+import javafx.collections.ObservableList;
+
+import java.util.ArrayList;
+
+
 public class Inventory {
     ArrayList<Item> catalog = new ArrayList<>();
     //Create input validator
