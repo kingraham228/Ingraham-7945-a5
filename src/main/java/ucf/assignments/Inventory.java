@@ -10,13 +10,10 @@ import java.util.ArrayList;
 
 public class Inventory {
     ArrayList<Item> catalog = new ArrayList<>();
-    //Create input validator
 
 
     //add item function
     public void addItem(String name, String serialNumber, String value){
-        //examine input fields for validity
-            //if valid
         //call item constructor with string string string
         Item addItem = new Item(name, serialNumber,value);
         //add the item to the list

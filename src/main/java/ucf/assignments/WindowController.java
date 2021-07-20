@@ -63,7 +63,11 @@ public class WindowController implements Initializable {
 
     @FXML
     public void bAddItem(ActionEvent actionEvent) {
-
+        userInventory.addItem(tfName.getText(), tfSerial.getText(), tfValue.getText());
+        updateTableView();
+        tfName.clear();
+        tfSerial.clear();
+        tfValue.clear();
     }
 
     
@@ -85,5 +89,6 @@ public class WindowController implements Initializable {
 
     public void updateTableView(){
         catalog = FXCollections.observableArrayList(userInventory.getCatalog());
+        tableView.setItems(catalog);
     }
 }
