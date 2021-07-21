@@ -16,7 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.InputMethodEvent;
 
-import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -30,14 +29,13 @@ public class WindowController implements Initializable {
     @FXML
     public TextField tfName;
     @FXML
-    private TableView<Item> tableView;
-    @FXML
     public TableColumn<Item, String> tcValue;
     @FXML
-    public TableColumn<Item,String> tcSerial;
+    public TableColumn<Item, String> tcSerial;
     @FXML
-    public TableColumn<Item,String> tcName;
-
+    public TableColumn<Item, String> tcName;
+    @FXML
+    private TableView<Item> tableView;
     private Inventory userInventory = new Inventory();
     private InputValidator iv = new InputValidator();
     private DialogManager dm = new DialogManager();
@@ -69,10 +67,10 @@ public class WindowController implements Initializable {
         //check for valid input
         boolean nameValid = iv.checkNameLength(tfName.getText());
         boolean serialValid = true;
-        boolean valueValid = true;
+        boolean valueValid = iv.checkValue(tfValue.getText());
 
         //if valid, add items
-        if(nameValid){
+        if (nameValid && valueValid) {
             userInventory.addItem(tfName.getText(), tfSerial.getText(), tfValue.getText());
             updateTableView();
 
@@ -80,14 +78,14 @@ public class WindowController implements Initializable {
             tfName.clear();
             tfSerial.clear();
             tfValue.clear();
-        } else{
+        } else {
             //if not valid, send an error
-            dm.reportErrorItem(nameValid,serialValid,valueValid);
+            dm.reportErrorItem(nameValid, serialValid, valueValid);
         }
 
     }
 
-    
+
     @FXML
     public void bDeleteItem(ActionEvent actionEvent) {
     }
@@ -104,7 +102,7 @@ public class WindowController implements Initializable {
         tcName.setCellValueFactory(new PropertyValueFactory<Item, String>("name"));
     }
 
-    public void updateTableView(){
+    public void updateTableView() {
         catalog = FXCollections.observableArrayList(userInventory.getCatalog());
         tableView.setItems(catalog);
     }
