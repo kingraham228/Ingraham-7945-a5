@@ -5,15 +5,20 @@ main()
 }
 
 class WindowController{
+- userInventory: Inventory
+- iv: InputValidator
 - dm: DialogManager
 - fm: FileManager
-- userInventory: Inventory
+
 - catalog: ObservableList<Item>
 
++initialize()
 +updateTableView()
++bAddItem()
 }
 
 class DialogManager{
++reportErrorItem()
 }
 
 class FileManager{
@@ -38,9 +43,9 @@ class Item{
 -serialNumber: String
 -value: BigDecimal
 
-+setName(String)
-+setSerialNumber(String)
-+setValue(BigDecimal)
++setName()
++setSerialNumber()
++setValue()
 +getName()
 +getSerialNumber()
 +getValue()

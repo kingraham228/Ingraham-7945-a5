@@ -6,9 +6,12 @@ import javafx.scene.control.Alert;
  *  UCF COP3330 Summer 2021 Assignment 5 Solution
  *  Copyright 2021 Kate Ingraham
  */
+
+//This class creates dialog boxes.
 public class DialogManager {
 
-    public void errorItem(boolean name, boolean serial, boolean value) {
+    //This method creates an error alert when item input is not valid.
+    public void reportErrorItem(boolean name, boolean serial, boolean value) {
         String nameError = "Inventory items must have a name between 2 and 256 characters.\n";
         String serialError = "Inventory items must have a unique serial number in the format" +
                 " of XXXXXXXXXX where X can be a letter or digit.\n";

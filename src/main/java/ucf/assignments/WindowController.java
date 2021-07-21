@@ -82,7 +82,7 @@ public class WindowController implements Initializable {
             tfValue.clear();
         } else{
             //if not valid, send an error
-            dm.errorItem(nameValid,serialValid,valueValid);
+            dm.reportErrorItem(nameValid,serialValid,valueValid);
         }
 
     }
