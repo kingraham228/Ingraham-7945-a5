@@ -23,7 +23,11 @@ public class Inventory {
         catalog.remove(index);
     }
 
-    //edit item function
+    //This method edits an existing item in the catalog.
+    public void editItem(int index, String name, String serialNumber, String value){
+        Item editedItem =  new Item(name, serialNumber, value);
+        catalog.set(index,editedItem);
+    }
 
     //sort items function
 

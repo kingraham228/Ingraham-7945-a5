@@ -15,6 +15,8 @@ class WindowController{
 +initialize()
 +updateTableView()
 +bAddItem()
++bDeleteItem()
++bEdit()
 }
 
 class DialogManager{

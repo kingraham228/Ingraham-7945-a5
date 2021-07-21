@@ -57,9 +57,6 @@ public class WindowController implements Initializable {
     public void mSearchSerial(ActionEvent actionEvent) {
     }
 
-    @FXML
-    public void tvEdit(InputMethodEvent inputMethodEvent) {
-    }
 
     //This method adds an item to the inventory when the "Add Item" button is clicked.
     @FXML
@@ -110,7 +107,7 @@ public class WindowController implements Initializable {
     @FXML
     public void tvSort(SortEvent<TableView<Item>> tableViewSortEvent) {
     }
-
+    //This method initializes the table view columns.
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //set up table columns
@@ -119,8 +116,13 @@ public class WindowController implements Initializable {
         tcName.setCellValueFactory(new PropertyValueFactory<Item, String>("name"));
     }
 
+    //This method updates teh items in the tableview.
     public void updateTableView() {
         catalog = FXCollections.observableArrayList(userInventory.getCatalog());
         tableView.setItems(catalog);
+    }
+
+    //This method allows a user to edit a table item when the "Edit Item" button is clicked.
+    public void bEdit(ActionEvent actionEvent) {
     }
 }

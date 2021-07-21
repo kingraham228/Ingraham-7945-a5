@@ -55,4 +55,31 @@ class InventoryTest {
 
         assertEquals(expected,actual);
     }
+
+    @Test
+    @DisplayName("Edit Item Test")
+    //Try editing an existing item
+    void editItem() {
+        Inventory test = new Inventory();
+
+        //add item 1
+        String name = "Test widget.";
+        String serialNumber = "DEG674WBS9";
+        String value = "$4.99";
+        test.addItem(name,serialNumber,value);
+
+        //set edited values
+        String name2 = "Widget 2.";
+        String serialNumber2 = "ZE0074WBS9";
+        String value2 = "$785";
+
+        test.editItem(0,name2,serialNumber2,value2);
+
+        //test that the item has changed
+        String actual = test.getCatalog().get(0).getName();
+        String expected = "Widget 2.";
+
+        assertEquals(expected,actual);
+
+    }
 }

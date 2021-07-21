@@ -32,7 +32,7 @@
       </MenuBar>
    </top>
    <center>
-      <TableView fx:id="tableView" editable="true" onInputMethodTextChanged="#tvEdit" onSort="#tvSort" prefHeight="375.0" prefWidth="442.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tableView" editable="true" onSort="#tvSort" prefHeight="375.0" prefWidth="442.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="tcValue" prefWidth="137.0" text="Value" />
           <TableColumn fx:id="tcSerial" prefWidth="165.0" text="Serial Number" />
@@ -49,14 +49,21 @@
             <HBox prefHeight="106.0" prefWidth="116.0" />
             <HBox prefHeight="79.0" prefWidth="116.0">
                <children>
+                  <Button mnemonicParsing="false" onAction="#bEdit" text="Edit Item">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="30.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="85.0" prefWidth="116.0">
+               <children>
                   <Button mnemonicParsing="false" onAction="#bDeleteItem" text="Delete Item">
                      <HBox.margin>
                         <Insets bottom="20.0" left="15.0" right="20.0" top="30.0" />
                      </HBox.margin>
                   </Button>
-               </children>
-            </HBox>
-            <HBox prefHeight="85.0" prefWidth="116.0" />
+               </children></HBox>
          </children>
       </VBox>
    </right>
