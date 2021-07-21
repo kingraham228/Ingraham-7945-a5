@@ -130,15 +130,15 @@ public class WindowController implements Initializable {
             Item editedItem = dm.getEditItemDialog(oldItem.getValue(), oldItem.getSerialNumber(), oldItem.getName());
 
             //Validate user inputs
-            boolean nameValid = iv.checkNameLength(oldItem.getName());
-            boolean serialValid = iv.checkFormatSerial(oldItem.getSerialNumber());
-            boolean valueValid = iv.checkValue(oldItem.getValue());
+            boolean nameValid = iv.checkNameLength(editedItem.getName());
+            boolean serialValid = iv.checkFormatSerial(editedItem.getSerialNumber());
+            boolean valueValid = iv.checkValue(editedItem.getValue());
 
             //if valid, replace the old item with the edited item
             if (nameValid && serialValid && valueValid) {
                 //call without a serial number pre-duplicate check
                 userInventory.editItem(index, editedItem.getName(), "", editedItem.getValue());
-                //check for duplicate serial number (must be done after the catalog is updated)
+                //check for duplicate serial number
                 serialValid = iv.checkUniqueSerial(userInventory.getCatalog(), editedItem.getSerialNumber());
                 if (!serialValid) {
                     //send a duplicate serial number error and rollback catalog update

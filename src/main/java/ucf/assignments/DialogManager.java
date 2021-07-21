@@ -77,9 +77,9 @@ public class DialogManager {
         TextField textFName = new TextField();
 
         //Set textfields with existing item data
-        textFValue.setPromptText(oldValue);
-        textFSerial.setPromptText(oldSerial);
-        textFName.setPromptText(oldName);
+        textFValue.setText(oldValue);
+        textFSerial.setText(oldSerial);
+        textFName.setText(oldName);
 
         gridPane.add(new Label("Item Value:"),0,0);
         gridPane.add(textFValue, 1, 0);
@@ -93,27 +93,11 @@ public class DialogManager {
         //Set result array
         ArrayList<String> editedArray = new ArrayList<>();
 
-        //Check for user changes in text fields
-        if(textFValue.getText().isBlank()){
-            editedArray.add(oldValue);
-        }else{
-            editedArray.add(textFValue.getText());
-        }
-
-        if(textFSerial.getText().isBlank()){
-            editedArray.add(oldSerial);
-        }else{
-            editedArray.add(textFSerial.getText());
-        }
-
-        if(textFName.getText().isBlank()){
-            editedArray.add(oldName);
-        }else{
-            editedArray.add(textFName.getText());
-        }
-
         dialog.setResultConverter(dialogButton ->{
             if (dialogButton == loginButtonType) {
+                editedArray.add(textFValue.getText());
+                editedArray.add(textFSerial.getText());
+                editedArray.add(textFName.getText());
                 return editedArray;
             }
             return null;
