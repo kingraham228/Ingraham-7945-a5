@@ -160,4 +160,69 @@ class InputValidatorTest {
 
         assertFalse(actual);
     }
+
+    @Test
+    @DisplayName("Check Serial Number: Valid")
+    //try a valid serial number
+    void checkFormatSerial() {
+        InputValidator test = new InputValidator();
+
+        String serial = "KA807DBK72";
+
+        boolean actual = test.checkFormatSerial(serial);
+
+        assertTrue(actual);
+    }
+
+    @Test
+    @DisplayName("Check Serial Number: too short")
+        //try a short serial number
+    void checkFormatSerial_short() {
+        InputValidator test = new InputValidator();
+
+        String serial = "KA80BK72";
+
+        boolean actual = test.checkFormatSerial(serial);
+
+        assertFalse(actual);
+    }
+
+    @Test
+    @DisplayName("Check Serial Number: too long")
+        //try a long serial number
+    void checkFormatSerial_long() {
+        InputValidator test = new InputValidator();
+
+        String serial = "KA8KAI920285DKLJGAE0BK72";
+
+        boolean actual = test.checkFormatSerial(serial);
+
+        assertFalse(actual);
+    }
+
+    @Test
+    @DisplayName("Check Serial Number: special characters")
+        //try a serial number with special characters
+    void checkFormatSerial_special() {
+        InputValidator test = new InputValidator();
+
+        String serial = "92D84G9_s@";
+
+        boolean actual = test.checkFormatSerial(serial);
+
+        assertFalse(actual);
+    }
+
+    @Test
+    @DisplayName("Check Serial Number: hyphens")
+        //try a serial number with special characters
+    void checkFormatSerial_hyphen() {
+        InputValidator test = new InputValidator();
+
+        String serial = "SK8-SKE-25";
+
+        boolean actual = test.checkFormatSerial(serial);
+
+        assertFalse(actual);
+    }
 }

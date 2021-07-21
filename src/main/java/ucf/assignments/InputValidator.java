@@ -50,7 +50,22 @@ public class InputValidator {
 
     //check unique serial
 
-    //format serial
+    //This method checks that the serial number is 10 characters with only letters or digits
+    public boolean checkFormatSerial(String serial){
+        //Check length
+        if(serial.length()!=10){
+            return false;
+        } else{
+            //Check for letters and digits
+            char [] serialArray = serial.toCharArray();
+            for(int i =0; i<serialArray.length; i++){
+                if(!Character.isLetterOrDigit(serialArray[i])){
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
 
     //This method checks if the inventory name is between 2 and 256 characters
     public boolean checkNameLength(String name) {
