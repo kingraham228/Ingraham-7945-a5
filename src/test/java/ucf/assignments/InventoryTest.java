@@ -1,5 +1,8 @@
 package ucf.assignments;
-
+/*
+ *  UCF COP3330 Summer 2021 Assignment 5 Solution
+ *  Copyright 2021 Kate Ingraham
+ */
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

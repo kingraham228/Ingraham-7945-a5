@@ -11,11 +11,9 @@ public class Inventory {
     ArrayList<Item> catalog = new ArrayList<>();
 
 
-    //add item function
+    //This method adds an item to the catalog array list
     public void addItem(String name, String serialNumber, String value){
-        //call item constructor with string string string
         Item addItem = new Item(name, serialNumber,value);
-        //add the item to the list
         catalog.add(addItem);
     }
 

@@ -47,9 +47,9 @@ class Item{
 }
 
 class InputValidator{
-+ formatDollars()
++ checkValue()
 + checkUniqueSerial()
-+ formatSerial()
++ checkFormatSerial()
 + checkNameLength()
 }
 
