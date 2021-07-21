@@ -70,6 +70,11 @@ public class WindowController implements Initializable {
         boolean valueValid = iv.checkValue(tfValue.getText());
 
         //Check if the serial number already exists
+        if(serialValid){
+            if(userInventory.getCatalog().size()>0){
+                serialValid = iv.checkUniqueSerial(userInventory.getCatalog(), tfSerial.getText());
+            }
+        }
 
         //if valid, add items
         if (nameValid && valueValid && serialValid) {
