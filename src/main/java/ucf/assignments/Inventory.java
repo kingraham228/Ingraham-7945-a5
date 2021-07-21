@@ -18,7 +18,10 @@ public class Inventory {
     }
 
 
-    //remove item function
+    //This method removes an item from the catalog array list
+    public void removeItem(int index){
+        catalog.remove(index);
+    }
 
     //edit item function
 
