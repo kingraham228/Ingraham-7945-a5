@@ -39,6 +39,8 @@ public class WindowController implements Initializable {
     public TableColumn<Item,String> tcName;
 
     private Inventory userInventory = new Inventory();
+    private InputValidator iv = new InputValidator();
+    private DialogManager dm = new DialogManager();
     private ObservableList<Item> catalog;
 
     @FXML
@@ -61,13 +63,28 @@ public class WindowController implements Initializable {
     public void tvEdit(InputMethodEvent inputMethodEvent) {
     }
 
+    //This method adds an item to the inventory when the "Add Item" button is clicked.
     @FXML
     public void bAddItem(ActionEvent actionEvent) {
-        userInventory.addItem(tfName.getText(), tfSerial.getText(), tfValue.getText());
-        updateTableView();
-        tfName.clear();
-        tfSerial.clear();
-        tfValue.clear();
+        //check for valid input
+        boolean nameValid = iv.checkNameLength(tfName.getText());
+        boolean serialValid = true;
+        boolean valueValid = true;
+
+        //if valid, add items
+        if(nameValid){
+            userInventory.addItem(tfName.getText(), tfSerial.getText(), tfValue.getText());
+            updateTableView();
+
+            //clear text fields
+            tfName.clear();
+            tfSerial.clear();
+            tfValue.clear();
+        } else{
+            //if not valid, send an error
+            dm.errorItem(nameValid,serialValid,valueValid);
+        }
+
     }
 
     
