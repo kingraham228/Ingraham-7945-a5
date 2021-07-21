@@ -38,4 +38,11 @@ public class DialogManager {
         itemError.setContentText(sb.toString());
         itemError.show();
     }
+
+    //This method creates an error when items don't exist
+    public void reportErrorEmpty(){
+        Alert itemEmpty = new Alert(Alert.AlertType.ERROR);
+        itemEmpty.setContentText("An item must be added to the inventory before you can take this action.");
+        itemEmpty.show();
+    }
 }

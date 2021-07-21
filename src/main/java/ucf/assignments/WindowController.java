@@ -92,9 +92,19 @@ public class WindowController implements Initializable {
 
     }
 
-
+    //This method removes an item from the table when the "Delete Item" button is clicked
     @FXML
     public void bDeleteItem(ActionEvent actionEvent) {
+       //if the item exists, remove it from the list
+        if(userInventory.getCatalog().size()>0){
+           int index = tableView.getSelectionModel().getSelectedIndex();
+           userInventory.removeItem(index);
+           updateTableView();
+       }else{
+            //send an error if there are not items to delete
+            dm.reportErrorEmpty();
+        }
+
     }
 
     @FXML
