@@ -1,6 +1,11 @@
 package ucf.assignments;
 
-import javafx.scene.control.Alert;
+import javafx.geometry.Insets;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+
+import java.util.ArrayList;
+import java.util.Optional;
 
 /*
  *  UCF COP3330 Summer 2021 Assignment 5 Solution
@@ -39,10 +44,87 @@ public class DialogManager {
         itemError.show();
     }
 
-    //This method creates an error when items don't exist
+    //This method creates an error alert when items don't exist
     public void reportErrorEmpty(){
         Alert itemEmpty = new Alert(Alert.AlertType.ERROR);
         itemEmpty.setContentText("An item must be added to the inventory before you can take this action.");
         itemEmpty.show();
+    }
+
+    //This method creates an error alert when there is a duplicate serial number
+    public void reportErrorDuplicateSerial(){
+        Alert dupSerial = new Alert(Alert.AlertType.ERROR);
+        dupSerial.setContentText("Item serial numbers must be unique.");
+        dupSerial.show();
+    }
+
+    //This method creates a dialog box for editing an item
+    public Item getEditItemDialog(String oldValue, String oldSerial, String oldName){
+        Dialog<ArrayList<String>> dialog = new Dialog<>();
+        dialog.setTitle("Edit Item");
+
+        ButtonType loginButtonType = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(loginButtonType,ButtonType.CANCEL);
+
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+        gridPane.setPadding(new Insets(20, 150, 10, 10));
+
+
+        TextField textFValue = new TextField();
+        TextField textFSerial = new TextField();
+        TextField textFName = new TextField();
+
+        //Set textfields with existing item data
+        textFValue.setPromptText(oldValue);
+        textFSerial.setPromptText(oldSerial);
+        textFName.setPromptText(oldName);
+
+        gridPane.add(new Label("Item Value:"),0,0);
+        gridPane.add(textFValue, 1, 0);
+        gridPane.add(new Label("Item Serial Number:"),0,1);
+        gridPane.add(textFSerial,1,1);
+        gridPane.add(new Label("Item Name:"),0,2);
+        gridPane.add(textFName,1,2);
+
+        dialog.getDialogPane().setContent(gridPane);
+
+        //Set result array
+        ArrayList<String> editedArray = new ArrayList<>();
+
+        //Check for user changes in text fields
+        if(textFValue.getText().isBlank()){
+            editedArray.add(oldValue);
+        }else{
+            editedArray.add(textFValue.getText());
+        }
+
+        if(textFSerial.getText().isBlank()){
+            editedArray.add(oldSerial);
+        }else{
+            editedArray.add(textFSerial.getText());
+        }
+
+        if(textFName.getText().isBlank()){
+            editedArray.add(oldName);
+        }else{
+            editedArray.add(textFName.getText());
+        }
+
+        dialog.setResultConverter(dialogButton ->{
+            if (dialogButton == loginButtonType) {
+                return editedArray;
+            }
+            return null;
+        });
+
+        Optional<ArrayList<String>> result = dialog.showAndWait();
+
+        if(result.isPresent()){
+            return new Item(editedArray.get(2),editedArray.get(1),editedArray.get(0));
+        }else{
+            return new Item(oldName,oldSerial,oldValue);
+        }
     }
 }

@@ -22,6 +22,8 @@ class WindowController{
 class DialogManager{
 +reportErrorItem()
 +reportErrorEmpty()
++reportErrorDuplicateSerial()
++getEditItemDialog()
 }
 
 class FileManager{

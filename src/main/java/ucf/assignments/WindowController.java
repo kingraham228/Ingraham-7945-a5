@@ -14,7 +14,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.InputMethodEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -67,8 +66,8 @@ public class WindowController implements Initializable {
         boolean valueValid = iv.checkValue(tfValue.getText());
 
         //Check if the serial number already exists
-        if(serialValid){
-            if(userInventory.getCatalog().size()>0){
+        if (serialValid) {
+            if (userInventory.getCatalog().size() > 0) {
                 serialValid = iv.checkUniqueSerial(userInventory.getCatalog(), tfSerial.getText());
             }
         }
@@ -92,12 +91,12 @@ public class WindowController implements Initializable {
     //This method removes an item from the table when the "Delete Item" button is clicked
     @FXML
     public void bDeleteItem(ActionEvent actionEvent) {
-       //if the item exists, remove it from the list
-        if(userInventory.getCatalog().size()>0){
-           int index = tableView.getSelectionModel().getSelectedIndex();
-           userInventory.removeItem(index);
-           updateTableView();
-       }else{
+        //if the item exists, remove it from the list
+        if (userInventory.getCatalog().size() > 0) {
+            int index = tableView.getSelectionModel().getSelectedIndex();
+            userInventory.removeItem(index);
+            updateTableView();
+        } else {
             //send an error if there are not items to delete
             dm.reportErrorEmpty();
         }
@@ -107,6 +106,7 @@ public class WindowController implements Initializable {
     @FXML
     public void tvSort(SortEvent<TableView<Item>> tableViewSortEvent) {
     }
+
     //This method initializes the table view columns.
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -124,5 +124,34 @@ public class WindowController implements Initializable {
 
     //This method allows a user to edit a table item when the "Edit Item" button is clicked.
     public void bEdit(ActionEvent actionEvent) {
+        if (!tableView.getSelectionModel().isEmpty()) {
+            Item oldItem = tableView.getSelectionModel().getSelectedItem();
+            int index = tableView.getSelectionModel().getSelectedIndex();
+            Item editedItem = dm.getEditItemDialog(oldItem.getValue(), oldItem.getSerialNumber(), oldItem.getName());
+
+            //Validate user inputs
+            boolean nameValid = iv.checkNameLength(oldItem.getName());
+            boolean serialValid = iv.checkFormatSerial(oldItem.getSerialNumber());
+            boolean valueValid = iv.checkValue(oldItem.getValue());
+
+            //if valid, replace the old item with the edited item
+            if (nameValid && serialValid && valueValid) {
+                //call without a serial number pre-duplicate check
+                userInventory.editItem(index, editedItem.getName(), "", editedItem.getValue());
+                //check for duplicate serial number (must be done after the catalog is updated)
+                serialValid = iv.checkUniqueSerial(userInventory.getCatalog(), editedItem.getSerialNumber());
+                if (!serialValid) {
+                    //send a duplicate serial number error and rollback catalog update
+                    dm.reportErrorDuplicateSerial();
+                    userInventory.editItem(index, oldItem.getName(), oldItem.getSerialNumber(), oldItem.getValue());
+                } else {
+                    userInventory.editItem(index, editedItem.getName(), editedItem.getSerialNumber(), editedItem.getValue());
+                }
+            } else {
+                //send format item error if inputs were not valid
+                dm.reportErrorItem(nameValid, serialValid, valueValid);
+            }
+        }
+        updateTableView();
     }
 }
