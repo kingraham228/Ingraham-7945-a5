@@ -1,5 +1,7 @@
 package ucf.assignments;
 
+import java.util.ArrayList;
+
 /*
  *  UCF COP3330 Summer 2021 Assignment 5 Solution
  *  Copyright 2021 Kate Ingraham
@@ -48,7 +50,15 @@ public class InputValidator {
         }
     }
 
-    //check unique serial
+    //This method checks to see if a serial number already exists in the inventory
+    public boolean checkUniqueSerial(ArrayList<Item> catalog, String serial){
+        for (Item item : catalog) {
+            if (item.getSerialNumber().equalsIgnoreCase(serial)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     //This method checks that the serial number is 10 characters with only letters or digits
     public boolean checkFormatSerial(String serial){
@@ -58,8 +68,8 @@ public class InputValidator {
         } else{
             //Check for letters and digits
             char [] serialArray = serial.toCharArray();
-            for(int i =0; i<serialArray.length; i++){
-                if(!Character.isLetterOrDigit(serialArray[i])){
+            for (char c : serialArray) {
+                if (!Character.isLetterOrDigit(c)) {
                     return false;
                 }
             }

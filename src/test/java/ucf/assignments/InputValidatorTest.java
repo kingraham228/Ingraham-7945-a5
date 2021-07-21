@@ -225,4 +225,36 @@ class InputValidatorTest {
 
         assertFalse(actual);
     }
+
+    @Test
+    @DisplayName("Check Unique Serial: Unique")
+    //try a serial number that doesn't yet exist
+    void checkUniqueSerial() {
+        InputValidator test = new InputValidator();
+        Inventory testIV = new Inventory();
+        testIV.addItem("Test widget","AAA000AAA0", "$2.99");
+
+        String serial = "BBB000BBB0";
+
+        boolean actual = test.checkUniqueSerial(testIV.getCatalog(), serial);
+
+        assertTrue(actual);
+
+    }
+
+    @Test
+    @DisplayName("Check Unique Serial: Repeat")
+        //try a serial number that already is in the catalog
+    void checkUniqueSerial_match() {
+        InputValidator test = new InputValidator();
+        Inventory testIV = new Inventory();
+        testIV.addItem("Test widget","AAA000AAA0", "$2.99");
+
+        String serial = "AAA000AAA0";
+
+        boolean actual = test.checkUniqueSerial(testIV.getCatalog(), serial);
+
+        assertFalse(actual);
+
+    }
 }

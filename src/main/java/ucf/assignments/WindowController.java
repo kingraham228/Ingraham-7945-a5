@@ -66,11 +66,13 @@ public class WindowController implements Initializable {
     public void bAddItem(ActionEvent actionEvent) {
         //check for valid input
         boolean nameValid = iv.checkNameLength(tfName.getText());
-        boolean serialValid = true;
+        boolean serialValid = iv.checkFormatSerial(tfSerial.getText());
         boolean valueValid = iv.checkValue(tfValue.getText());
 
+        //Check if the serial number already exists
+
         //if valid, add items
-        if (nameValid && valueValid) {
+        if (nameValid && valueValid && serialValid) {
             userInventory.addItem(tfName.getText(), tfSerial.getText(), tfValue.getText());
             updateTableView();
 
