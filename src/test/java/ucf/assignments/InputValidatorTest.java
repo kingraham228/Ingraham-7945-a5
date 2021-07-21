@@ -82,4 +82,82 @@ class InputValidatorTest {
 
         assertTrue(actual);
     }
+
+    @Test
+    @DisplayName("Value Test: formatted entry")
+    //try a valid entry
+    void checkValue_formatted() {
+        InputValidator test = new InputValidator();
+
+        String value = "$4.99";
+
+        boolean actual = test.checkValue(value);
+
+        assertTrue(actual);
+    }
+
+    @Test
+    @DisplayName("Value Test: missing $")
+    //try without the $
+    void checkValue_missing$() {
+        InputValidator test = new InputValidator();
+
+        String value = "4.99";
+
+        boolean actual = test.checkValue(value);
+
+        assertFalse(actual);
+    }
+
+    @Test
+    @DisplayName("Value Test: whole amount")
+        //try an amount without a decimal
+    void checkValue_whole() {
+        InputValidator test = new InputValidator();
+
+        String value = "$499";
+
+        boolean actual = test.checkValue(value);
+
+        assertTrue(actual);
+    }
+
+    @Test
+    @DisplayName("Value Test: too many ..")
+        //try with many decimals
+    void checkValue_decimals() {
+        InputValidator test = new InputValidator();
+
+        String value = "$4.99.23";
+
+        boolean actual = test.checkValue(value);
+
+        assertFalse(actual);
+    }
+
+    @Test
+    @DisplayName("Value Test: too many digits after decimal")
+        //try with many digits after the decimal
+    void checkValue_decimalDigitsAfter() {
+        InputValidator test = new InputValidator();
+
+        String value = "$4.991";
+
+        boolean actual = test.checkValue(value);
+
+        assertFalse(actual);
+    }
+
+    @Test
+    @DisplayName("Value Test: too few digits after decimal")
+        //try with too few digits after the decimal
+    void checkValue_decimalFewDigitsAfter() {
+        InputValidator test = new InputValidator();
+
+        String value = "$4.9";
+
+        boolean actual = test.checkValue(value);
+
+        assertFalse(actual);
+    }
 }
