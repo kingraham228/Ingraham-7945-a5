@@ -98,7 +98,7 @@ public class WindowController implements Initializable {
             updateTableView();
         } else {
             //send an error if there are not items to delete
-            dm.reportErrorEmpty();
+            dm.reportError("An item must be added to the inventory before you can delete an item.");
         }
 
     }
@@ -116,7 +116,7 @@ public class WindowController implements Initializable {
         tcName.setCellValueFactory(new PropertyValueFactory<Item, String>("name"));
     }
 
-    //This method updates teh items in the tableview.
+    //This method updates the items in the tableview.
     public void updateTableView() {
         catalog = FXCollections.observableArrayList(userInventory.getCatalog());
         tableView.setItems(catalog);
@@ -142,16 +142,20 @@ public class WindowController implements Initializable {
                 serialValid = iv.checkUniqueSerial(userInventory.getCatalog(), editedItem.getSerialNumber());
                 if (!serialValid) {
                     //send a duplicate serial number error and rollback catalog update
-                    dm.reportErrorDuplicateSerial();
+                    dm.reportError("Item serial numbers must be unique.");
                     userInventory.editItem(index, oldItem.getName(), oldItem.getSerialNumber(), oldItem.getValue());
                 } else {
                     userInventory.editItem(index, editedItem.getName(), editedItem.getSerialNumber(), editedItem.getValue());
+                    updateTableView();
                 }
             } else {
                 //send format item error if inputs were not valid
                 dm.reportErrorItem(nameValid, serialValid, valueValid);
             }
+        }else{
+            //send an error for no item selected
+            dm.reportError("An item must be selected before you can edit an item.");
         }
-        updateTableView();
+
     }
 }

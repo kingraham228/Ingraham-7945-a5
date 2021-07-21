@@ -44,18 +44,11 @@ public class DialogManager {
         itemError.show();
     }
 
-    //This method creates an error alert when items don't exist
-    public void reportErrorEmpty(){
-        Alert itemEmpty = new Alert(Alert.AlertType.ERROR);
-        itemEmpty.setContentText("An item must be added to the inventory before you can take this action.");
-        itemEmpty.show();
-    }
-
-    //This method creates an error alert when there is a duplicate serial number
-    public void reportErrorDuplicateSerial(){
-        Alert dupSerial = new Alert(Alert.AlertType.ERROR);
-        dupSerial.setContentText("Item serial numbers must be unique.");
-        dupSerial.show();
+    //This method creates a general error alert
+    public void reportError(String error){
+        Alert generalError = new Alert(Alert.AlertType.ERROR);
+        generalError.setContentText(error);
+        generalError.show();
     }
 
     //This method creates a dialog box for editing an item
