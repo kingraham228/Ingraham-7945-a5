@@ -15,12 +15,12 @@ class FileManagerTest {
         //create a test inventory
         Inventory test = new Inventory();
         test.addItem("item one","lllwwwiii2","$3444");
-        test.addItem("item two","iii222mmma","$42");
+        test.addItem("item duo","iii222mmma","$42");
         test.addItem("item three","000222jjj4","$3.99");
 
         String filePath = "myinventory.txt";
 
-        fm.saveInventoryTSV(test.getCatalog(),filePath);
+        fm.saveInventory(test.getCatalog(),filePath,"txt");
         //visually check the txt file output
     }
 }

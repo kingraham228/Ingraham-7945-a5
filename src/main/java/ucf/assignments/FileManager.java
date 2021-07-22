@@ -12,21 +12,28 @@ import java.util.FormatterClosedException;
 public class FileManager {
 
     //This method saves the inventory to a file
-    public void saveInventoryTSV(ArrayList<Item> inventory, String filePath){
+    public void saveInventory(ArrayList<Item> inventory, String filePath, String fileExtension){
         try(Formatter output = new Formatter(filePath)){
             //print each item in the inventory to the file
             for (Item inventoryItem : inventory) {
                 String name = inventoryItem.getName();
                 String serial = inventoryItem.getSerialNumber();
                 String value = inventoryItem.getValue();
+                String item = "File save error.";
 
-                String item = String.format("%s\t%s\t%s%n", value,serial,name);
+                if(fileExtension.equalsIgnoreCase("txt")){
+                    item = formatTSV(value,serial,name);
+                }
                 output.format(item);
             }
         } catch (SecurityException | FileNotFoundException | FormatterClosedException e) {
             e.printStackTrace();
         }
 
+    }
+
+    public String formatTSV(String value, String serial, String name){
+        return String.format("%s\t%s\t%s%n", value,serial,name);
     }
 
 }

@@ -14,7 +14,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -48,6 +50,7 @@ public class WindowController implements Initializable {
     private Inventory userInventory = new Inventory();
     private InputValidator iv = new InputValidator();
     private DialogManager dm = new DialogManager();
+    private FileManager fm = new FileManager();
     private ObservableList<Item> catalog;
 
     @FXML
@@ -56,6 +59,19 @@ public class WindowController implements Initializable {
 
     @FXML
     public void mSave(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Inventory");
+        FileChooser.ExtensionFilter txtFilter = new FileChooser.ExtensionFilter("Tab-Separated Value  (*.txt)","*.txt");
+        fileChooser.getExtensionFilters().add(txtFilter);
+        File file = fileChooser.showSaveDialog(null);
+        if (file != null) {
+            String filePath = file.getPath();
+            String fileName = file.getName();
+            String fileExtension = fileName.substring(fileName.lastIndexOf(".")+1,file.getName().length());
+            System.out.println(fileExtension);
+            fm.saveInventory(userInventory.getCatalog(), filePath,fileExtension);
+        }
+
     }
 
     //This method allows the user to search the inventory by name and display results
