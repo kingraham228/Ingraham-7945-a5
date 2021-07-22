@@ -50,6 +50,7 @@ public class WindowController implements Initializable {
 
     @FXML
     public void mSearchName(ActionEvent actionEvent) {
+       String userSearch = dm.getSearchDialog("Enter the item name");
     }
 
     @FXML

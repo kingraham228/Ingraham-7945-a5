@@ -23,6 +23,7 @@ class DialogManager{
 +reportErrorItem()
 +reportError()
 +getEditItemDialog()
++getSearchDialog()
 }
 
 class FileManager{

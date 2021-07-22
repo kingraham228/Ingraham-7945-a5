@@ -51,6 +51,14 @@ public class DialogManager {
         generalError.show();
     }
 
+    public String getSearchDialog(String instructions){
+        TextInputDialog search = new TextInputDialog(instructions);
+        search.setHeaderText("Search Item Inventory");
+        Optional<String> userSearch = search.showAndWait();
+        return userSearch.orElse("cancel search");
+
+    }
+
     //This method creates a dialog box for editing an item
     public Item getEditItemDialog(String oldValue, String oldSerial, String oldName){
         Dialog<ArrayList<String>> dialog = new Dialog<>();
