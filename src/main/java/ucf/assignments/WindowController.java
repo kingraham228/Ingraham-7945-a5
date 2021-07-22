@@ -9,13 +9,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.SortEvent;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
@@ -34,7 +35,16 @@ public class WindowController implements Initializable {
     @FXML
     public TableColumn<Item, String> tcName;
     @FXML
+    public Button idDeleteButton;
+    @FXML
+    public Button idEditButton;
+    @FXML
+    public Button idViewAllButton;
+    @FXML
+    public Button idAddItemButton;
+    @FXML
     private TableView<Item> tableView;
+
     private Inventory userInventory = new Inventory();
     private InputValidator iv = new InputValidator();
     private DialogManager dm = new DialogManager();
@@ -48,15 +58,33 @@ public class WindowController implements Initializable {
     public void mSave(ActionEvent actionEvent) {
     }
 
+    //This method allows the user to search the inventory by name and display results
     @FXML
     public void mSearchName(ActionEvent actionEvent) {
-       String userSearch = dm.getSearchDialog("Enter the item name");
+        String userSearch = dm.getSearchDialog("Enter the item name");
+        if(!userSearch.equals("cancel search")) {
+            ArrayList<Item> foundItems = userInventory.searchName(userSearch);
+            Item searchResultHeader = new Item("","","Search Results:");
+            foundItems.add(0,searchResultHeader);
+            tableView.setItems(FXCollections.observableArrayList(foundItems));
+
+            //Make View All button visible
+            idViewAllButton.setVisible(true);
+
+            //Hide inventory buttons in search result view
+            idDeleteButton.setVisible(false);
+            idEditButton.setVisible(false);
+            idAddItemButton.setVisible(false);
+            tfValue.setVisible(false);
+            tfSerial.setVisible(false);
+            tfName.setVisible(false);
+            
+        }
     }
 
     @FXML
     public void mSearchSerial(ActionEvent actionEvent) {
     }
-
 
     //This method adds an item to the inventory when the "Add Item" button is clicked.
     @FXML
@@ -72,7 +100,6 @@ public class WindowController implements Initializable {
                 serialValid = iv.checkUniqueSerial(userInventory.getCatalog(), tfSerial.getText());
             }
         }
-
         //if valid, add items
         if (nameValid && valueValid && serialValid) {
             userInventory.addItem(tfName.getText(), tfSerial.getText(), tfValue.getText());
@@ -86,22 +113,20 @@ public class WindowController implements Initializable {
             //if not valid, send an error
             dm.reportErrorItem(nameValid, serialValid, valueValid);
         }
-
     }
 
     //This method removes an item from the table when the "Delete Item" button is clicked
     @FXML
     public void bDeleteItem(ActionEvent actionEvent) {
         //if the item exists, remove it from the list
-        if (userInventory.getCatalog().size() > 0) {
+        if (!tableView.getSelectionModel().isEmpty()) {
             int index = tableView.getSelectionModel().getSelectedIndex();
             userInventory.removeItem(index);
             updateTableView();
         } else {
             //send an error if there are not items to delete
-            dm.reportError("An item must be added to the inventory before you can delete an item.");
+            dm.reportError("You must select an item before you can delete it.");
         }
-
     }
 
     //This method initializes the table view columns.
@@ -111,6 +136,9 @@ public class WindowController implements Initializable {
         tcValue.setCellValueFactory(new PropertyValueFactory<Item, String>("value"));
         tcSerial.setCellValueFactory(new PropertyValueFactory<Item, String>("serialNumber"));
         tcName.setCellValueFactory(new PropertyValueFactory<Item, String>("name"));
+
+        //hide View All button until needed
+        idViewAllButton.setVisible(false);
     }
 
     //This method updates the items in the tableview.
@@ -120,6 +148,7 @@ public class WindowController implements Initializable {
     }
 
     //This method allows a user to edit a table item when the "Edit Item" button is clicked.
+    @FXML
     public void bEdit(ActionEvent actionEvent) {
         if (!tableView.getSelectionModel().isEmpty()) {
             Item oldItem = tableView.getSelectionModel().getSelectedItem();
@@ -149,13 +178,24 @@ public class WindowController implements Initializable {
                 //send format item error if inputs were not valid
                 dm.reportErrorItem(nameValid, serialValid, valueValid);
             }
-        }else{
+        } else {
             //send an error for no item selected
             dm.reportError("An item must be selected before you can edit an item.");
         }
-
     }
+    //This method returns the user to a view of all inventory items when the "View All" button is clicked.
+    @FXML
+    public void bViewAll(ActionEvent actionEvent) {
+        updateTableView();
+        //make inventory buttons visible
+        idDeleteButton.setVisible(true);
+        idEditButton.setVisible(true);
+        idAddItemButton.setVisible(true);
+        tfValue.setVisible(true);
+        tfSerial.setVisible(true);
+        tfName.setVisible(true);
 
-    public void bClearSearch(ActionEvent actionEvent) {
+        //hide view all button
+        idViewAllButton.setVisible(false);
     }
 }

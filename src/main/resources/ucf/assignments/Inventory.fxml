@@ -48,24 +48,24 @@
          <children>
             <HBox prefHeight="106.0" prefWidth="116.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#bClearSearch" prefHeight="25.0" prefWidth="101.0" text="Clear Search">
+                  <Button fx:id="idViewAllButton" mnemonicParsing="false" onAction="#bViewAll" prefHeight="25.0" prefWidth="93.0" text="View All">
                      <HBox.margin>
-                        <Insets bottom="20.0" left="15.0" right="15.0" top="60.0" />
+                        <Insets bottom="20.0" left="15.0" right="20.0" top="60.0" />
                      </HBox.margin>
                   </Button>
                </children></HBox>
             <HBox prefHeight="79.0" prefWidth="116.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#bEdit" text="Edit Item">
+                  <Button fx:id="idEditButton" mnemonicParsing="false" onAction="#bEdit" prefHeight="25.0" prefWidth="93.0" text="Edit Item">
                      <HBox.margin>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="30.0" />
+                        <Insets bottom="20.0" left="15.0" right="20.0" top="30.0" />
                      </HBox.margin>
                   </Button>
                </children>
             </HBox>
             <HBox prefHeight="85.0" prefWidth="116.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#bDeleteItem" text="Delete Item">
+                  <Button fx:id="idDeleteButton" mnemonicParsing="false" onAction="#bDeleteItem" prefHeight="25.0" prefWidth="93.0" text="Delete Item">
                      <HBox.margin>
                         <Insets bottom="20.0" left="15.0" right="20.0" top="30.0" />
                      </HBox.margin>
@@ -84,19 +84,19 @@
             </TextField>
             <TextField fx:id="tfSerial" promptText="Serial Number: XXXXXXXXXX">
                <HBox.margin>
-                  <Insets bottom="20.0" left="22.0" right="20.0" top="15.0" />
+                  <Insets bottom="20.0" right="20.0" top="15.0" />
                </HBox.margin>
             </TextField>
             <TextField fx:id="tfName" promptText="Name">
                <HBox.margin>
-                  <Insets bottom="20.0" left="22.0" right="20.0" top="15.0" />
+                  <Insets bottom="20.0" right="20.0" top="15.0" />
                </HBox.margin>
             </TextField>
             <VBox prefHeight="65.0" prefWidth="146.0">
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#bAddItem" text="Add Item">
+                  <Button fx:id="idAddItemButton" alignment="CENTER" mnemonicParsing="false" onAction="#bAddItem" prefWidth="93.0" text="Add Item">
                      <VBox.margin>
-                        <Insets bottom="20.0" left="15.0" right="20.0" top="15.0" />
+                        <Insets bottom="20.0" right="20.0" top="15.0" />
                      </VBox.margin>
                   </Button>
                </children>

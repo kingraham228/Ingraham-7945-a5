@@ -17,6 +17,8 @@ class WindowController{
 +bAddItem()
 +bDeleteItem()
 +bEdit()
++bViewAll()
++mSearchName()
 }
 
 class DialogManager{
