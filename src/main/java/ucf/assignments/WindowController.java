@@ -78,12 +78,29 @@ public class WindowController implements Initializable {
             tfValue.setVisible(false);
             tfSerial.setVisible(false);
             tfName.setVisible(false);
-            
         }
     }
-
+    //This method allows the user to search the inventory by serial number and display results
     @FXML
     public void mSearchSerial(ActionEvent actionEvent) {
+        String userSearch = dm.getSearchDialog("Enter the item serial number");
+        if(!userSearch.equals("cancel search")) {
+            ArrayList<Item> foundItems = userInventory.searchSerial(userSearch);
+            Item searchResultHeader = new Item("","","Search Results:");
+            foundItems.add(0,searchResultHeader);
+            tableView.setItems(FXCollections.observableArrayList(foundItems));
+
+            //Make View All button visible
+            idViewAllButton.setVisible(true);
+
+            //Hide inventory buttons in search result view
+            idDeleteButton.setVisible(false);
+            idEditButton.setVisible(false);
+            idAddItemButton.setVisible(false);
+            tfValue.setVisible(false);
+            tfSerial.setVisible(false);
+            tfName.setVisible(false);
+        }
     }
 
     //This method adds an item to the inventory when the "Add Item" button is clicked.
