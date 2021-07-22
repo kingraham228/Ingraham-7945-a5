@@ -36,7 +36,6 @@ class Inventory{
 +addItem()
 +removeItem()
 +editItem()
-+sortItems()
 +searchSerial()
 +searchName()
 +getCatalog()
@@ -62,7 +61,7 @@ class InputValidator{
 + checkNameLength()
 }
 
-openfx.org.Application <|-- App
+org.javafx.Application <|-- App
 App -- WindowController
 WindowController o-- DialogManager
 WindowController o-- FileManager

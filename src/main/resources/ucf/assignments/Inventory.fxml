@@ -32,7 +32,7 @@
       </MenuBar>
    </top>
    <center>
-      <TableView fx:id="tableView" editable="true" onSort="#tvSort" prefHeight="375.0" prefWidth="442.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tableView" editable="true" prefHeight="375.0" prefWidth="442.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="tcValue" prefWidth="137.0" text="Value" />
           <TableColumn fx:id="tcSerial" prefWidth="165.0" text="Serial Number" />

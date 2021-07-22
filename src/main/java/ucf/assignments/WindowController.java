@@ -103,10 +103,6 @@ public class WindowController implements Initializable {
 
     }
 
-    @FXML
-    public void tvSort(SortEvent<TableView<Item>> tableViewSortEvent) {
-    }
-
     //This method initializes the table view columns.
     @Override
     public void initialize(URL location, ResourceBundle resources) {
