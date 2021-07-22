@@ -114,7 +114,7 @@ class InventoryTest {
 
         assertEquals(expectedSize, actualSize);
 
-        //Check that it is the correct itme
+        //Check that it is the correct item
         String actual = results.get(0).getName();
         String expected = "Test widget.";
 
@@ -175,6 +175,99 @@ class InventoryTest {
         //Check no result
         String actual = results.get(0).getName();
         String expected = "No search results found.";
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    @DisplayName("Search by Serial: Exact match")
+    //Try an exact match
+    void searchSerial() {
+        Inventory test = new Inventory();
+
+        //add item 1
+        String name = "Test widget.";
+        String serialNumber = "DEG674WBS9";
+        String value = "$4.99";
+        test.addItem(name,serialNumber,value);
+
+        //add item 2
+        String name2 = "Widget 2.";
+        String serialNumber2 = "B7S9981140";
+        String value2 = "$785";
+        test.addItem(name2,serialNumber2,value2);
+
+        String search = "B7S9981140";
+
+        ArrayList<Item> results = test.searchSerial(search);
+
+        //Check expected array size
+        int actualSize = results.size();
+        int expectedSize = 1;
+
+        assertEquals(expectedSize, actualSize);
+
+        //Check that it is the correct item
+        String actual = results.get(0).getSerialNumber();
+        String expected = "B7S9981140";
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    @DisplayName("Search by Serial: Partial match")
+        //Try a partial match
+    void searchSerial_partial() {
+        Inventory test = new Inventory();
+
+        //add item 1
+        String name = "Test widget.";
+        String serialNumber = "DEG674WBS9";
+        String value = "$4.99";
+        test.addItem(name,serialNumber,value);
+
+        //add item 2
+        String name2 = "Widget 2.";
+        String serialNumber2 = "B7S9981140";
+        String value2 = "$785";
+        test.addItem(name2,serialNumber2,value2);
+
+        String search = "7";
+
+        ArrayList<Item> results = test.searchSerial(search);
+
+        //Check expected array size
+        int actualSize = results.size();
+        int expectedSize = 2;
+
+        assertEquals(expectedSize, actualSize);
+    }
+
+    @Test
+    @DisplayName("Search by Serial: No match")
+        //Try a no match
+    void searchSerial_noMatch() {
+        Inventory test = new Inventory();
+
+        //add item 1
+        String name = "Test widget.";
+        String serialNumber = "DEG674WBS9";
+        String value = "$4.99";
+        test.addItem(name,serialNumber,value);
+
+        //add item 2
+        String name2 = "Widget 2.";
+        String serialNumber2 = "B7S9981140";
+        String value2 = "$785";
+        test.addItem(name2,serialNumber2,value2);
+
+        String search = "0000000000";
+
+        ArrayList<Item> results = test.searchSerial(search);
+
+        //Check no result
+        String actual = results.get(0).getSerialNumber();
+        String expected = "NO SEARCH RESULTS FOUND.";
 
         assertEquals(expected,actual);
     }

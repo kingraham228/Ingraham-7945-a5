@@ -14,6 +14,7 @@ public class Item {
     private SimpleStringProperty value;
 
     public Item(String name, String serialNumber, String value) {
+        serialNumber = serialNumber.toUpperCase();
         this.name = new SimpleStringProperty(name);
         this.serialNumber = new SimpleStringProperty(serialNumber);
         this.value = new SimpleStringProperty(value);
