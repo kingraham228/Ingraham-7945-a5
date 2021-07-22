@@ -1,13 +1,13 @@
 package ucf.assignments;
-
-import javafx.beans.property.SimpleStringProperty;
-
-import java.math.BigDecimal;
-
 /*
  *  UCF COP3330 Summer 2021 Assignment 5 Solution
  *  Copyright 2021 Kate Ingraham
  */
+import javafx.beans.property.SimpleStringProperty;
+
+import java.math.BigDecimal;
+
+
 public class Item {
     private SimpleStringProperty name;
     private SimpleStringProperty serialNumber;

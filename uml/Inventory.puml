@@ -12,13 +12,17 @@ class WindowController{
 
 - catalog: ObservableList<Item>
 
-+initialize()
-+updateTableView()
++mOpen()
++mSave()
++mSearchName()
++mSearchSerial()
 +bAddItem()
 +bDeleteItem()
++initialize()
++updateTableView()
 +bEdit()
 +bViewAll()
-+mSearchName()
+
 }
 
 class DialogManager{
@@ -29,7 +33,7 @@ class DialogManager{
 }
 
 class FileManager{
-+saveInventory()
++saveInventoryTSV()
 +loadInventory()
 }
 

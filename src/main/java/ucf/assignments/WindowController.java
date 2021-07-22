@@ -62,10 +62,10 @@ public class WindowController implements Initializable {
     @FXML
     public void mSearchName(ActionEvent actionEvent) {
         String userSearch = dm.getSearchDialog("Enter the item name");
-        if(!userSearch.equals("cancel search")) {
+        if (!userSearch.equals("cancel search")) {
             ArrayList<Item> foundItems = userInventory.searchName(userSearch);
-            Item searchResultHeader = new Item("","","Search Results:");
-            foundItems.add(0,searchResultHeader);
+            Item searchResultHeader = new Item("", "", "Search Results:");
+            foundItems.add(0, searchResultHeader);
             tableView.setItems(FXCollections.observableArrayList(foundItems));
 
             //Make View All button visible
@@ -80,14 +80,15 @@ public class WindowController implements Initializable {
             tfName.setVisible(false);
         }
     }
+
     //This method allows the user to search the inventory by serial number and display results
     @FXML
     public void mSearchSerial(ActionEvent actionEvent) {
         String userSearch = dm.getSearchDialog("Enter the item serial number");
-        if(!userSearch.equals("cancel search")) {
+        if (!userSearch.equals("cancel search")) {
             ArrayList<Item> foundItems = userInventory.searchSerial(userSearch);
-            Item searchResultHeader = new Item("","","Search Results:");
-            foundItems.add(0,searchResultHeader);
+            Item searchResultHeader = new Item("", "", "Search Results:");
+            foundItems.add(0, searchResultHeader);
             tableView.setItems(FXCollections.observableArrayList(foundItems));
 
             //Make View All button visible
@@ -200,6 +201,7 @@ public class WindowController implements Initializable {
             dm.reportError("An item must be selected before you can edit an item.");
         }
     }
+
     //This method returns the user to a view of all inventory items when the "View All" button is clicked.
     @FXML
     public void bViewAll(ActionEvent actionEvent) {

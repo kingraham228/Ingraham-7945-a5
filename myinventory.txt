@@ -1,0 +1,3 @@
+$3444	LLLWWWIII2	item one
+$42	III222MMMA	item two
+$3.99	000222JJJ4	item three
