@@ -6,6 +6,9 @@ package ucf.assignments;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InventoryTest {
@@ -81,5 +84,98 @@ class InventoryTest {
 
         assertEquals(expected,actual);
 
+    }
+
+    @Test
+    @DisplayName("Search by Name: exact match")
+    //try an exact match search
+    void searchName() {
+        Inventory test = new Inventory();
+
+        //add item 1
+        String name = "Test widget.";
+        String serialNumber = "DEG674WBS9";
+        String value = "$4.99";
+        test.addItem(name,serialNumber,value);
+
+        //add item 2
+        String name2 = "Widget 2.";
+        String serialNumber2 = "DE0074WBS9";
+        String value2 = "$785";
+        test.addItem(name2,serialNumber2,value2);
+
+        String search = "Test widget.";
+
+        ArrayList<Item> results = test.searchName(search);
+
+        //Check expected array size
+        int actualSize = results.size();
+        int expectedSize = 1;
+
+        assertEquals(expectedSize, actualSize);
+
+        //Check that it is the correct itme
+        String actual = results.get(0).getName();
+        String expected = "Test widget.";
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    @DisplayName("Search by Name: partial match")
+        //try a partial match search
+    void searchName_partial() {
+        Inventory test = new Inventory();
+
+        //add item 1
+        String name = "Test widget.";
+        String serialNumber = "DEG674WBS9";
+        String value = "$4.99";
+        test.addItem(name,serialNumber,value);
+
+        //add item 2
+        String name2 = "Widget 2.";
+        String serialNumber2 = "DE0074WBS9";
+        String value2 = "$785";
+        test.addItem(name2,serialNumber2,value2);
+
+        String search = "widget";
+
+        ArrayList<Item> results = test.searchName(search);
+
+        //Check expected array size
+        int actualSize = results.size();
+        int expectedSize = 2;
+
+        assertEquals(expectedSize, actualSize);
+    }
+
+    @Test
+    @DisplayName("Search by Name: no match")
+        //try a no match search
+    void searchName_noMatch() {
+        Inventory test = new Inventory();
+
+        //add item 1
+        String name = "Test widget.";
+        String serialNumber = "DEG674WBS9";
+        String value = "$4.99";
+        test.addItem(name,serialNumber,value);
+
+        //add item 2
+        String name2 = "Widget 2.";
+        String serialNumber2 = "DE0074WBS9";
+        String value2 = "$785";
+        test.addItem(name2,serialNumber2,value2);
+
+        String search = "shady";
+
+        ArrayList<Item> results = test.searchName(search);
+
+        //Check no result
+        String actual = results.get(0).getName();
+        String expected = "No search results found.";
+
+        assertEquals(expected,actual);
     }
 }

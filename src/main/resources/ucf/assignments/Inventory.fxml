@@ -46,7 +46,14 @@
    <right>
       <VBox prefHeight="375.0" prefWidth="116.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="106.0" prefWidth="116.0" />
+            <HBox prefHeight="106.0" prefWidth="116.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#bClearSearch" prefHeight="25.0" prefWidth="101.0" text="Clear Search">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="15.0" right="15.0" top="60.0" />
+                     </HBox.margin>
+                  </Button>
+               </children></HBox>
             <HBox prefHeight="79.0" prefWidth="116.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#bEdit" text="Edit Item">

@@ -5,6 +5,7 @@ package ucf.assignments;
  */
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 //This class manages items
 public class Inventory {
@@ -29,11 +30,33 @@ public class Inventory {
         catalog.set(index,editedItem);
     }
 
-    //sort items function
-
     //search serial number function
 
-    //search name function
+    //This method searches the catalog by name
+    public ArrayList<Item> searchName(String name){
+        ArrayList<Item> foundItems = new ArrayList<>();
+        //Search each catalog element
+        for (Item item : catalog) {
+            String checkCatName = item.getName();
+            //check for exact match
+            if (checkCatName.equalsIgnoreCase(name)) {
+                foundItems.add(item);
+            }else{
+                //check for partial match
+                checkCatName = checkCatName.toLowerCase();
+                name = name.toLowerCase();
+                if(checkCatName.contains(name)){
+                    foundItems.add(item);
+                }
+            }
+        }
+        //Add an empty item if nothing is found
+        if(foundItems.size()<1){
+            Item noResults = new Item("No search results found.","","");
+            foundItems.add(noResults);
+        }
+        return foundItems;
+    }
 
     //get catalog
 

@@ -154,4 +154,7 @@ public class WindowController implements Initializable {
         }
 
     }
+
+    public void bClearSearch(ActionEvent actionEvent) {
+    }
 }
