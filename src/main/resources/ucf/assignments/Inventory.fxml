@@ -77,17 +77,17 @@
    <bottom>
       <HBox prefHeight="65.0" prefWidth="552.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="tfValue" promptText="Value: $0.00">
+            <TextField fx:id="tfValue" promptText="Enter Value">
                <HBox.margin>
                   <Insets bottom="20.0" left="22.0" right="20.0" top="15.0" />
                </HBox.margin>
             </TextField>
-            <TextField fx:id="tfSerial" promptText="Serial Number: XXXXXXXXXX">
+            <TextField fx:id="tfSerial" promptText="Enter Serial Number">
                <HBox.margin>
                   <Insets bottom="20.0" right="20.0" top="15.0" />
                </HBox.margin>
             </TextField>
-            <TextField fx:id="tfName" promptText="Name">
+            <TextField fx:id="tfName" promptText="Enter Name">
                <HBox.margin>
                   <Insets bottom="20.0" right="20.0" top="15.0" />
                </HBox.margin>

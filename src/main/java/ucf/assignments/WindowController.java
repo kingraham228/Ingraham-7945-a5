@@ -68,7 +68,6 @@ public class WindowController implements Initializable {
             String filePath = file.getPath();
             String fileName = file.getName();
             String fileExtension = fileName.substring(fileName.lastIndexOf(".")+1,file.getName().length());
-            System.out.println(fileExtension);
             fm.saveInventory(userInventory.getCatalog(), filePath,fileExtension);
         }
 

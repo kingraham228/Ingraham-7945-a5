@@ -19,12 +19,11 @@ public class FileManager {
                 String name = inventoryItem.getName();
                 String serial = inventoryItem.getSerialNumber();
                 String value = inventoryItem.getValue();
-                String item = "File save error.";
 
                 if(fileExtension.equalsIgnoreCase("txt")){
-                    item = formatTSV(value,serial,name);
+                    String item = formatTSV(value,serial,name);
+                    output.format(item);
                 }
-                output.format(item);
             }
         } catch (SecurityException | FileNotFoundException | FormatterClosedException e) {
             e.printStackTrace();
@@ -32,8 +31,14 @@ public class FileManager {
 
     }
 
+    //This method formats output for tab-separated values
     public String formatTSV(String value, String serial, String name){
         return String.format("%s\t%s\t%s%n", value,serial,name);
+    }
+
+    //This method opens inventory lists from a file
+    public void loadInventory(){
+
     }
 
 }

@@ -6,6 +6,7 @@ package ucf.assignments;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 
 
 public class Item {
@@ -15,6 +16,7 @@ public class Item {
 
     public Item(String name, String serialNumber, String value) {
         serialNumber = serialNumber.toUpperCase();
+        value = formatValue(value);
         this.name = new SimpleStringProperty(name);
         this.serialNumber = new SimpleStringProperty(serialNumber);
         this.value = new SimpleStringProperty(value);
@@ -54,5 +56,12 @@ public class Item {
 
     public void setValue(String value) {
         this.value.set(value);
+    }
+
+    //This method standardizes the string for value
+    public String formatValue(String userValue){
+        double translate = Double.parseDouble(userValue);
+        String moneyValue = NumberFormat.getCurrencyInstance().format(translate);
+        return moneyValue;
     }
 }
