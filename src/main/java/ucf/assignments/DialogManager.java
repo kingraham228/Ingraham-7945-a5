@@ -23,11 +23,7 @@ public class DialogManager {
                 Serial numbers must be 10 characters long.
                                 
                 """;
-        String valueError = """
-                Inventory items must have a monetary value in US dollars.
-                Partial penny values are not accepted.
-                                
-                """;
+        String valueError = "Inventory items must have a monetary value in US dollars.\n\n";
         StringBuilder sb = new StringBuilder();
 
         //add appropriate error text to the string builder

@@ -43,12 +43,7 @@ public class InputValidator {
                 if(decimalCount>1||dollarCount>1){
                     return false;
                 }else{
-                    //check that there are 2 digits after the decimal if there is one
-                    if(decimalCount==1){
-                        return (valueArray.length - decimalIndex) == 3;
-                    }else{
-                        return true;
-                    }
+                    return true;
                 }
         }
     }
