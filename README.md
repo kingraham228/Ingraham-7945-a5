@@ -13,17 +13,17 @@ Press "OK" to save your changes.
 ### Sorting Items 
 You can sort your inventory by value, serial number, or name. 
 To sort, click the corresponding header of the column that you wish to sort by. 
-Clicking once will sort the items in natural order. Clicking again will reverse the sorting order. 
+Clicking once will sort the items. Clicking again will reverse the sorting order. 
 ### Searching for Items
 You can search your inventory by name or serial number. 
-To search by name, click on the "Search" menu and select "Search by name." 
+To search by name, click on the "Search" menu and select "Search by Name." 
 Type the search name in the dialog box and press "OK." 
-To search by serial number, click on the "Search" menu and select "Search by serial number." 
+To search by serial number, click on the "Search" menu and select "Search by Serial Number." 
 Type the serial number in the dialog box and press "OK." 
 To leave the search result view, press the "View All" button.
 ### Saving your Inventory
-To save your inventory, click on the "File" menu and select "Save As..." 
-Choose your file name and type in the dialog box and pres "Save." 
+To save your inventory, click on the "File" menu and select "Save as." 
+Choose your file name and type in the dialog box and press "Save." 
 Supported file types include tab-separated values (TSV) and HTML files. 
 ### Loading a Saved Inventory
 To load a previously saved inventory, click on the "File" menu and select "Open." 
