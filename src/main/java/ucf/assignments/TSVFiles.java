@@ -12,6 +12,7 @@ public class TSVFiles {
     }
 
     //This method parses tab-separated values
+    //Note: Testing for this function is integrated in the FileManager parseFileData() testing
     public ArrayList<Item> parseTSV(ArrayList<String> fileData) {
         InputValidator iv = new InputValidator();
         ArrayList<Item> fileItems = new ArrayList<>();

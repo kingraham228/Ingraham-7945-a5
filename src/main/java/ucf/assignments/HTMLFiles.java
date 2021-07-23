@@ -38,4 +38,39 @@ public class HTMLFiles {
         htmlFooters.add("</html>");
         return htmlFooters;
     }
+
+    //This method parses existing html files into inventory items
+    public ArrayList<Item> parseHTML(ArrayList<String> fileData){
+        InputValidator iv = new InputValidator();
+        ArrayList<Item> fileItems = new ArrayList<>();
+
+        for (String fileDatum : fileData) {
+            String[] pieces = fileDatum.split("</td>");
+            if (pieces.length == 4) {
+                String value = pieces[0];
+                String serial = pieces[1];
+                String name = pieces[2];
+
+                //remove <td> tags
+                value = value.replaceAll("<td>", "");
+                serial = serial.replaceAll("<td>", "");
+                name = name.replaceAll("<td>", "");
+
+                //remove /n breaks
+                value = value.replaceAll("\n","");
+                serial = serial.replaceAll("\n", "");
+                name = name.replaceAll("\n", "");
+
+                //validate input before adding it to the array
+                boolean valueValid = iv.checkValue(value);
+                boolean serialValid = iv.checkFormatSerial(serial);
+                boolean nameValid = iv.checkNameLength(name);
+                if (valueValid && serialValid && nameValid) {
+                    Item addItem = new Item(name, serial, value);
+                    fileItems.add(addItem);
+                }
+            }
+        }
+        return fileItems;
+    }
 }

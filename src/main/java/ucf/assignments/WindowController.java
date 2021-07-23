@@ -60,15 +60,15 @@ public class WindowController implements Initializable {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Inventory");
         File file = fileChooser.showOpenDialog(null);
-        if(file != null){
+        if (file != null) {
             Path filePath = Path.of(file.getPath());
             String fileName = file.getName();
-            String fileExtension = fileName.substring(fileName.lastIndexOf(".")+1,file.getName().length());
-            ArrayList<Item> fileItems = fm.loadInventory(filePath,fileExtension);
+            String fileExtension = fileName.substring(fileName.lastIndexOf(".") + 1, file.getName().length());
+            ArrayList<Item> fileItems = fm.loadInventory(filePath, fileExtension);
             //send an error if the parser did not add any items
-            if(fileItems.size()<1){
+            if (fileItems.size() < 1) {
                 dm.reportError("No items loaded. Please check the formatting of the file you are opening.");
-            }else{
+            } else {
                 //check for unique serial numbers
                 for (Item fileItem : fileItems) {
                     boolean serialUnique = iv.checkUniqueSerial(userInventory.getCatalog(), fileItem.getSerialNumber());
@@ -80,23 +80,23 @@ public class WindowController implements Initializable {
             updateTableView();
         }
     }
+
     //This method allows the user to save the inventory to a file
     @FXML
     public void mSave(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Inventory");
-        FileChooser.ExtensionFilter txtFilter = new FileChooser.ExtensionFilter("Tab-Separated Value  (*.txt)","*.txt");
-        FileChooser.ExtensionFilter htmlFilter = new FileChooser.ExtensionFilter("HTML  (*.html)","*.html");
+        FileChooser.ExtensionFilter txtFilter = new FileChooser.ExtensionFilter("Tab-Separated Value  (*.txt)", "*.txt");
+        FileChooser.ExtensionFilter htmlFilter = new FileChooser.ExtensionFilter("HTML  (*.html)", "*.html");
         fileChooser.getExtensionFilters().add(txtFilter);
         fileChooser.getExtensionFilters().add(htmlFilter);
         File file = fileChooser.showSaveDialog(null);
         if (file != null) {
             String filePath = file.getPath();
             String fileName = file.getName();
-            String fileExtension = fileName.substring(fileName.lastIndexOf(".")+1,file.getName().length());
-            fm.saveInventory(userInventory.getCatalog(), filePath,fileExtension);
+            String fileExtension = fileName.substring(fileName.lastIndexOf(".") + 1, file.getName().length());
+            fm.saveInventory(userInventory.getCatalog(), filePath, fileExtension);
         }
-
     }
 
     //This method allows the user to search the inventory by name and display results
