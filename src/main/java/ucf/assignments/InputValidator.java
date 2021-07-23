@@ -1,11 +1,11 @@
 package ucf.assignments;
-
-import java.util.ArrayList;
-
 /*
  *  UCF COP3330 Summer 2021 Assignment 5 Solution
  *  Copyright 2021 Kate Ingraham
  */
+
+import java.util.ArrayList;
+
 //This class checks that user input is valid
 public class InputValidator {
 
@@ -16,40 +16,31 @@ public class InputValidator {
             return false;
         } else {
             char[] valueArray = value.toCharArray();
-                //check that the remaining characters are numbers or a decimal
-                int decimalCount = 0;
-                int dollarCount = 0;
-                int decimalIndex = -1;
-                for (int i = 0; i < valueArray.length; i++) {
-                    if (!Character.isDigit(valueArray[i])) {
-                        if (valueArray[i] == '.') {
-                            decimalIndex = i;
-                            decimalCount++;
+            //check that the remaining characters are numbers or a decimal
+            int decimalCount = 0;
+            int dollarCount = 0;
+            for (char c : valueArray) {
+                if (!Character.isDigit(c)) {
+                    if (c == '.') {
+                        decimalCount++;
+                    } else {
+                        if (c == '$') {
+                            dollarCount++;
                         } else {
-                            if(valueArray[i] == '$'){
-                                dollarCount++;
-                            }else{
-                                if(valueArray[i]==','){
-                                    //do nothing. Commas will be pulled out in item construction
-                                }else{
-                                    return false;
-                                }
+                            if (c != ',') {
+                                return false;
                             }
                         }
                     }
                 }
-
-                //check number of decimals
-                if(decimalCount>1||dollarCount>1){
-                    return false;
-                }else{
-                    return true;
-                }
+            }
+            //check number of decimals
+            return decimalCount <= 1 && dollarCount <= 1;
         }
     }
 
     //This method checks to see if a serial number already exists in the inventory
-    public boolean checkUniqueSerial(ArrayList<Item> catalog, String serial){
+    public boolean checkUniqueSerial(ArrayList<Item> catalog, String serial) {
         for (Item item : catalog) {
             if (item.getSerialNumber().equalsIgnoreCase(serial)) {
                 return false;
@@ -59,13 +50,13 @@ public class InputValidator {
     }
 
     //This method checks that the serial number is 10 characters with only letters or digits
-    public boolean checkFormatSerial(String serial){
+    public boolean checkFormatSerial(String serial) {
         //Check length
-        if(serial.length()!=10){
+        if (serial.length() != 10) {
             return false;
-        } else{
+        } else {
             //Check for letters and digits
-            char [] serialArray = serial.toCharArray();
+            char[] serialArray = serial.toCharArray();
             for (char c : serialArray) {
                 if (!Character.isLetterOrDigit(c)) {
                     return false;

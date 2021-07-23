@@ -3,9 +3,12 @@ package ucf.assignments;
  *  UCF COP3330 Summer 2021 Assignment 5 Solution
  *  Copyright 2021 Kate Ingraham
  */
+
 import java.util.ArrayList;
 
+//This class formats data for Tab-separated value(TSV) files
 public class TSVFiles {
+
     //This method formats output for tab-separated values
     public String formatTSV(String value, String serial, String name) {
         return String.format("%s\t%s\t%s%n", value, serial, name);

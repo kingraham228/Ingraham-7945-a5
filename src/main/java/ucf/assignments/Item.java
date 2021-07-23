@@ -9,7 +9,7 @@ import javafx.beans.property.SimpleStringProperty;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
-
+//This class provides the object Item and access to its properties.
 public class Item {
     private SimpleStringProperty name;
     private SimpleStringProperty serialNumber;
@@ -27,10 +27,6 @@ public class Item {
         return name.get();
     }
 
-    public SimpleStringProperty nameProperty() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name.set(name);
     }
@@ -39,31 +35,19 @@ public class Item {
         return serialNumber.get();
     }
 
-    public SimpleStringProperty serialNumberProperty() {
-        return serialNumber;
-    }
-
-    public void setSerialNumber(String serialNumber) {
-        this.serialNumber.set(serialNumber);
-    }
-
     public String getValue() {
         return value.get();
-    }
-
-    public SimpleStringProperty valueProperty() {
-        return value;
     }
 
     public void setValue(String value) {
         this.value.set(value);
     }
 
-    //This method standardizes the string for value
-    public String formatValue(String userValue){
+    //This method standardizes the string for value so that it is easy for users to type in
+    public String formatValue(String userValue) {
         ArrayList<Character> trim = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
-        for(int i=0; i<userValue.length(); i++){
+        for (int i = 0; i < userValue.length(); i++) {
             trim.add(userValue.charAt(i));
         }
         for (Character character : trim) {
@@ -75,7 +59,6 @@ public class Item {
             } else {
                 sb.append(character);
             }
-
         }
         String numbers = sb.toString();
         //format as a money string

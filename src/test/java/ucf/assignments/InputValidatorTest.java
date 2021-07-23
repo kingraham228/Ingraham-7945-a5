@@ -110,6 +110,32 @@ class InputValidatorTest {
     }
 
     @Test
+    @DisplayName("Value Test: letters")
+        //try with letters
+    void checkValue_letters() {
+        InputValidator test = new InputValidator();
+
+        String value = "adgse";
+
+        boolean actual = test.checkValue(value);
+
+        assertFalse(actual);
+    }
+
+    @Test
+    @DisplayName("Value Test: special characters")
+        //try with special characters
+    void checkValue_specialCharacters() {
+        InputValidator test = new InputValidator();
+
+        String value = "8.6+";
+
+        boolean actual = test.checkValue(value);
+
+        assertFalse(actual);
+    }
+
+    @Test
     @DisplayName("Value Test: whole amount")
         //try an amount without a decimal
     void checkValue_whole() {

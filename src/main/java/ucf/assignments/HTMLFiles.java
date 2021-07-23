@@ -3,18 +3,19 @@ package ucf.assignments;
  *  UCF COP3330 Summer 2021 Assignment 5 Solution
  *  Copyright 2021 Kate Ingraham
  */
+
 import java.util.ArrayList;
 
-
+//This class formats data to and from HTML files.
 public class HTMLFiles {
 
     //This method formats output for HTML items
-    public String formatHTMLString(String value, String serial, String name){
-        return String.format("<tr>\n<td>%s</td><td>%s</td><td>%s</td>\n</tr>\n", value,serial,name);
+    public String formatHTMLString(String value, String serial, String name) {
+        return String.format("<tr>\n<td>%s</td><td>%s</td><td>%s</td>\n</tr>\n", value, serial, name);
     }
 
     //This method formats the beginning header for an HTML table
-    public ArrayList<String> formatHTMLHeading(){
+    public ArrayList<String> formatHTMLHeading() {
         ArrayList<String> htmlHeaders = new ArrayList<>();
         htmlHeaders.add("<!DOCTYPE html>\n");
         htmlHeaders.add("<html>\n");
@@ -31,7 +32,7 @@ public class HTMLFiles {
     }
 
     //This method formats the ending footer for an HTML table
-    public ArrayList<String> formatHtmlFooter(){
+    public ArrayList<String> formatHtmlFooter() {
         ArrayList<String> htmlFooters = new ArrayList<>();
         htmlFooters.add("</table>\n");
         htmlFooters.add("</body>\n");
@@ -40,7 +41,7 @@ public class HTMLFiles {
     }
 
     //This method parses existing html files into inventory items
-    public ArrayList<Item> parseHTML(ArrayList<String> fileData){
+    public ArrayList<Item> parseHTML(ArrayList<String> fileData) {
         InputValidator iv = new InputValidator();
         ArrayList<Item> fileItems = new ArrayList<>();
 

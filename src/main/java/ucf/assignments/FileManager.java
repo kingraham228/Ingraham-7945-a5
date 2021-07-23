@@ -3,11 +3,13 @@ package ucf.assignments;
  *  UCF COP3330 Summer 2021 Assignment 5 Solution
  *  Copyright 2021 Kate Ingraham
  */
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.*;
 
+//This class manages saving and loading files
 public class FileManager {
     HTMLFiles html = new HTMLFiles();
     TSVFiles tsv = new TSVFiles();
@@ -16,7 +18,7 @@ public class FileManager {
     public void saveInventory(ArrayList<Item> inventory, String filePath, String fileExtension) {
         try (Formatter output = new Formatter(filePath)) {
             //set file headers if needed
-            if(fileExtension.equalsIgnoreCase("html")){
+            if (fileExtension.equalsIgnoreCase("html")) {
                 ArrayList<String> headers = html.formatHTMLHeading();
                 for (String header : headers) {
                     output.format(header);
@@ -32,17 +34,17 @@ public class FileManager {
                 if (fileExtension.equalsIgnoreCase("txt")) {
                     String item = tsv.formatTSV(value, serial, name);
                     output.format(item);
-                }else{
+                } else {
+
                     //HTML
-                    if(fileExtension.equalsIgnoreCase("html")){
-                        String item = html.formatHTMLString(value,serial,name);
+                    if (fileExtension.equalsIgnoreCase("html")) {
+                        String item = html.formatHTMLString(value, serial, name);
                         output.format(item);
                     }
                 }
             }
-
             //set file footers if needed
-            if(fileExtension.equalsIgnoreCase("html")){
+            if (fileExtension.equalsIgnoreCase("html")) {
                 ArrayList<String> footers = html.formatHtmlFooter();
                 for (String footer : footers) {
                     output.format(footer);
@@ -75,10 +77,9 @@ public class FileManager {
         if (fileExtension.equalsIgnoreCase("txt")) {
             return tsv.parseTSV(fileData);
         }
-        if(fileExtension.equalsIgnoreCase("html")){
+        if (fileExtension.equalsIgnoreCase("html")) {
             return html.parseHTML(fileData);
         }
         return fileItems;
     }
-
 }

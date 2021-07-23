@@ -6,7 +6,6 @@ package ucf.assignments;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -56,7 +55,7 @@ public class WindowController implements Initializable {
 
     //This method allows the user to open a file and load items into the inventory
     @FXML
-    public void mOpen(ActionEvent actionEvent) {
+    public void mOpen() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Inventory");
         File file = fileChooser.showOpenDialog(null);
@@ -83,7 +82,7 @@ public class WindowController implements Initializable {
 
     //This method allows the user to save the inventory to a file
     @FXML
-    public void mSave(ActionEvent actionEvent) {
+    public void mSave() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Inventory");
         FileChooser.ExtensionFilter txtFilter = new FileChooser.ExtensionFilter("Tab-Separated Value  (*.txt)", "*.txt");
@@ -101,7 +100,7 @@ public class WindowController implements Initializable {
 
     //This method allows the user to search the inventory by name and display results
     @FXML
-    public void mSearchName(ActionEvent actionEvent) {
+    public void mSearchName() {
         String userSearch = dm.getSearchDialog("Enter the item name");
         if (!userSearch.equals("cancel search")) {
             ArrayList<Item> foundItems = userInventory.searchName(userSearch);
@@ -122,7 +121,7 @@ public class WindowController implements Initializable {
 
     //This method allows the user to search the inventory by serial number and display results
     @FXML
-    public void mSearchSerial(ActionEvent actionEvent) {
+    public void mSearchSerial() {
         String userSearch = dm.getSearchDialog("Enter the item serial number");
         if (!userSearch.equals("cancel search")) {
             ArrayList<Item> foundItems = userInventory.searchSerial(userSearch);
@@ -143,7 +142,7 @@ public class WindowController implements Initializable {
 
     //This method adds an item to the inventory when the "Add Item" button is clicked.
     @FXML
-    public void bAddItem(ActionEvent actionEvent) {
+    public void bAddItem() {
         //check for valid input
         boolean nameValid = iv.checkNameLength(tfName.getText());
         boolean serialValid = iv.checkFormatSerial(tfSerial.getText());
@@ -172,7 +171,7 @@ public class WindowController implements Initializable {
 
     //This method removes an item from the table when the "Delete Item" button is clicked
     @FXML
-    public void bDeleteItem(ActionEvent actionEvent) {
+    public void bDeleteItem() {
         //if the item exists, remove it from the list
         if (!tableView.getSelectionModel().isEmpty()) {
             int index = tableView.getSelectionModel().getSelectedIndex();
@@ -188,9 +187,9 @@ public class WindowController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //set up table columns
-        tcValue.setCellValueFactory(new PropertyValueFactory<Item, String>("value"));
-        tcSerial.setCellValueFactory(new PropertyValueFactory<Item, String>("serialNumber"));
-        tcName.setCellValueFactory(new PropertyValueFactory<Item, String>("name"));
+        tcValue.setCellValueFactory(new PropertyValueFactory<>("value"));
+        tcSerial.setCellValueFactory(new PropertyValueFactory<>("serialNumber"));
+        tcName.setCellValueFactory(new PropertyValueFactory<>("name"));
 
         //hide View All button until needed
         idViewAllButton.setVisible(false);
@@ -204,7 +203,7 @@ public class WindowController implements Initializable {
 
     //This method allows a user to edit a table item when the "Edit Item" button is clicked.
     @FXML
-    public void bEdit(ActionEvent actionEvent) {
+    public void bEdit() {
         if (!tableView.getSelectionModel().isEmpty()) {
             Item oldItem = tableView.getSelectionModel().getSelectedItem();
             int index = tableView.getSelectionModel().getSelectedIndex();
@@ -241,7 +240,7 @@ public class WindowController implements Initializable {
 
     //This method returns the user to a view of all inventory items when the "View All" button is clicked.
     @FXML
-    public void bViewAll(ActionEvent actionEvent) {
+    public void bViewAll() {
         updateTableView();
         //make inventory buttons visible
         idDeleteButton.setVisible(true);
