@@ -34,9 +34,11 @@ class DialogManager{
 
 class FileManager{
 -iv: InputValidator
+-html: HTMLFiles
+-tsv: TSVFiles
 +saveInventory()
-+formatTSV()
 +loadInventory()
++parseFileData()
 }
 
 class Inventory{
@@ -71,6 +73,18 @@ class InputValidator{
 + checkNameLength()
 }
 
+class HTMLFiles{
++formatHTMLString()
++formatHTMLHeading()
++formatHTMLFooter()
+}
+
+class TSVFiles{
++formatTSV()
++parseTSV()
+}
+
+
 org.javafx.Application <|-- App
 App -- WindowController
 WindowController o-- DialogManager
@@ -79,4 +93,6 @@ WindowController o-- Inventory
 Inventory *-- Item
 WindowController -- InputValidator
 FileManager --InputValidator
+FileManager *-- HTMLFiles
+FileManager *-- TSVFiles
 @enduml

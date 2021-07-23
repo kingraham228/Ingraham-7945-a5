@@ -11,23 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class FileManagerTest {
 
     @Test
-    @DisplayName("Test Save TSV list")
-    //try saving a tsv list
-    void saveInventoryTSV() {
-        FileManager fm = new FileManager();
-        //create a test inventory
-        Inventory test = new Inventory();
-        test.addItem("item one","lllwwwiii2","$3444");
-        test.addItem("item duo","iii222mmma","$42");
-        test.addItem("item three","000222jjj4","$3.99");
-
-        String filePath = "myinventory.txt";
-
-        fm.saveInventory(test.getCatalog(),filePath,"txt");
-        //visually check the txt file output
-    }
-
-    @Test
     @DisplayName("Parse Test: TSV correct")
     //try a correctly formatted tsv
     void parseFileData() {
@@ -98,5 +81,38 @@ class FileManagerTest {
         String actual = test.get(0).getName();
         String expected = "item one";
         assertEquals(expected,actual);
+    }
+    @Test
+    @DisplayName("Test Save TSV list")
+        //try saving a tsv list
+    void saveInventoryTSV() {
+        FileManager fm = new FileManager();
+        //create a test inventory
+        Inventory test = new Inventory();
+        test.addItem("item one","lllwwwiii2","$3444");
+        test.addItem("item duo","iii222mmma","$42");
+        test.addItem("item three","000222jjj4","$3.99");
+
+        String filePath = "myinventory.txt";
+
+        fm.saveInventory(test.getCatalog(),filePath,"txt");
+        //visually check the txt file output
+    }
+
+    @Test
+    @DisplayName("Test HTML Save")
+    //try saving a list to HTML
+    void saveInventory_html() {
+        FileManager fm = new FileManager();
+        //create a test inventory
+        Inventory test = new Inventory();
+        test.addItem("item one","lllwwwiii2","$3444");
+        test.addItem("item two","iii222mmma","$42");
+        test.addItem("item three","000222jjj4","$3.99");
+
+        String filePath = "myinventory.html";
+
+        fm.saveInventory(test.getCatalog(),filePath,"html");
+        //visually check the txt file output
     }
 }
