@@ -10,7 +10,7 @@ public class HTMLFiles {
 
     //This method formats output for HTML items
     public String formatHTMLString(String value, String serial, String name){
-        return String.format("<tr>\n<td>%s</td>\n<td>%s</td>\n<td>%s</td>\n</tr>\n", value,serial,name);
+        return String.format("<tr>\n<td>%s</td><td>%s</td><td>%s</td>\n</tr>\n", value,serial,name);
     }
 
     //This method formats the beginning header for an HTML table
@@ -46,7 +46,7 @@ public class HTMLFiles {
 
         for (String fileDatum : fileData) {
             String[] pieces = fileDatum.split("</td>");
-            if (pieces.length == 4) {
+            if (pieces.length == 3) {
                 String value = pieces[0];
                 String serial = pieces[1];
                 String name = pieces[2];
@@ -55,11 +55,6 @@ public class HTMLFiles {
                 value = value.replaceAll("<td>", "");
                 serial = serial.replaceAll("<td>", "");
                 name = name.replaceAll("<td>", "");
-
-                //remove /n breaks
-                value = value.replaceAll("\n","");
-                serial = serial.replaceAll("\n", "");
-                name = name.replaceAll("\n", "");
 
                 //validate input before adding it to the array
                 boolean valueValid = iv.checkValue(value);

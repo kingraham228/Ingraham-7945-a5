@@ -18,16 +18,8 @@ class HTMLFilesTest {
     void parseHTML() {
         HTMLFiles test = new HTMLFiles();
         ArrayList<String> testFileData = new ArrayList<>();
-        String test1 = """
-                <td>$3,444.00</td>
-                <td>LLLWWWIII2</td>
-                <td>item one</td>
-                """;
-        String test2 = """
-                <td>$42.00</td>
-                <td>III222MMMA</td>
-                <td>item two</td>
-                """;
+        String test1 = "<td>$3,444.00</td><td>LLLWWWIII2</td><td>item one</td>";
+        String test2 = "<td>$42.00</td><td>III222MMMA</td><td>item two</td>";
         testFileData.add(test1);
         testFileData.add(test2);
 
@@ -46,16 +38,8 @@ class HTMLFilesTest {
     void parseHTML_serial() {
         HTMLFiles test = new HTMLFiles();
         ArrayList<String> testFileData = new ArrayList<>();
-        String test1 = """
-                <td>$3,444.00</td>
-                <td>LLLWWWIII2</td>
-                <td>item one</td>
-                """;
-        String test2 = """
-                <td>$42.00</td>
-                <td>III222MMMA</td>
-                <td>item two</td>
-                """;
+        String test1 = "<td>$3,444.00</td><td>LLLWWWIII2</td><td>item one</td>";
+        String test2 = "<td>$42.00</td><td>III222MMMA</td><td>item two</td>";
         testFileData.add(test1);
         testFileData.add(test2);
 
@@ -74,16 +58,8 @@ class HTMLFilesTest {
     void parseHTML_value() {
         HTMLFiles test = new HTMLFiles();
         ArrayList<String> testFileData = new ArrayList<>();
-        String test1 = """
-                <td>$3,444.00</td>
-                <td>LLLWWWIII2</td>
-                <td>item one</td>
-                """;
-        String test2 = """
-                <td>$42.00</td>
-                <td>III222MMMA</td>
-                <td>item two</td>
-                """;
+        String test1 = "<td>$3,444.00</td><td>LLLWWWIII2</td><td>item one</td>";
+        String test2 = "<td>$42.00</td><td>III222MMMA</td><td>item two</td>";
         testFileData.add(test1);
         testFileData.add(test2);
 

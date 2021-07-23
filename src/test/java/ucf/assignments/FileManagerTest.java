@@ -115,4 +115,24 @@ class FileManagerTest {
         fm.saveInventory(test.getCatalog(),filePath,"html");
         //visually check the txt file output
     }
+
+    @Test
+    @DisplayName("Test HTML Parsing: Correct format")
+    //try parsing a correctly formatted HTML file
+    void testParseFileData_html() {
+        FileManager test = new FileManager();
+        ArrayList<String> testFileData = new ArrayList<>();
+        String test1 = "<td>$3,444.00</td><td>LLLWWWIII2</td><td>item one</td>";
+        String test2 = "<td>$42.00</td><td>III222MMMA</td><td>item two</td>";
+        testFileData.add(test1);
+        testFileData.add(test2);
+
+        ArrayList<Item> fileItems = test.parseFileData(testFileData,"html");
+
+        //Check the second element value
+        String actual = fileItems.get(1).getValue();
+        String expected = "$42.00";
+
+        assertEquals(expected,actual);
+    }
 }

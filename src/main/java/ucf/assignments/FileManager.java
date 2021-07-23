@@ -75,6 +75,9 @@ public class FileManager {
         if (fileExtension.equalsIgnoreCase("txt")) {
             return tsv.parseTSV(fileData);
         }
+        if(fileExtension.equalsIgnoreCase("html")){
+            return html.parseHTML(fileData);
+        }
         return fileItems;
     }
 

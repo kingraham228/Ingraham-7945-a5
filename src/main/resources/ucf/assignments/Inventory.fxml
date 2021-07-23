@@ -75,7 +75,7 @@
       </VBox>
    </right>
    <bottom>
-      <HBox prefHeight="65.0" prefWidth="552.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="65.0" prefWidth="552.0" styleClass="hbox" stylesheets="@InventoryStyle.css" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="tfValue" promptText="Enter Value">
                <HBox.margin>
