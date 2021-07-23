@@ -18,6 +18,7 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.net.URL;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -53,10 +54,33 @@ public class WindowController implements Initializable {
     private FileManager fm = new FileManager();
     private ObservableList<Item> catalog;
 
+    //This method allows the user to open a file and load items into the inventory
     @FXML
     public void mOpen(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Inventory");
+        File file = fileChooser.showOpenDialog(null);
+        if(file != null){
+            Path filePath = Path.of(file.getPath());
+            String fileName = file.getName();
+            String fileExtension = fileName.substring(fileName.lastIndexOf(".")+1,file.getName().length());
+            ArrayList<Item> fileItems = fm.loadInventory(filePath,fileExtension);
+            //send an error if the parser did not add any items
+            if(fileItems.size()<1){
+                dm.reportError("No items loaded. Please check the formatting of the file you are opening.");
+            }else{
+                //check for unique serial numbers
+                for (Item fileItem : fileItems) {
+                    boolean serialUnique = iv.checkUniqueSerial(userInventory.getCatalog(), fileItem.getSerialNumber());
+                    if (serialUnique) {
+                        userInventory.addItem(fileItem.getName(), fileItem.getSerialNumber(), fileItem.getValue());
+                    }
+                }
+            }
+            updateTableView();
+        }
     }
-
+    //This method allows the user to save the inventory to a file
     @FXML
     public void mSave(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
