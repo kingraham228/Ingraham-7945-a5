@@ -17,14 +17,17 @@ public class DialogManager {
 
     //This method creates an error alert when item input is not valid.
     public void reportErrorItem(boolean name, boolean serial, boolean value) {
-        String nameError = "Inventory items must have a name between 2 and 256 characters.\n";
-        String serialError = "Inventory items must have a unique serial number in the format" +
-                " of XXXXXXXXXX where X can be a letter or digit.\n";
-        String valueError = """
-                Inventory items must have a monetary value in US dollars in the format $0.00
-                Example: $4.99 or $364
+        String nameError = "Inventory items must have a name between 2 and 256 characters.\n\n";
+        String serialError = """
+                Inventory items must have a unique serial number in the format of XXXXXXXXXX where X can be a letter or digit.
+                Serial numbers must be 10 characters long.
+                                
                 """;
-
+        String valueError = """
+                Inventory items must have a monetary value in US dollars.
+                Partial penny values are not accepted.
+                                
+                """;
         StringBuilder sb = new StringBuilder();
 
         //add appropriate error text to the string builder

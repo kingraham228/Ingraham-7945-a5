@@ -162,6 +162,32 @@ class InputValidatorTest {
     }
 
     @Test
+    @DisplayName("Value Test: commas")
+        //try with commas
+    void checkValue_commas() {
+        InputValidator test = new InputValidator();
+
+        String value = "5,486";
+
+        boolean actual = test.checkValue(value);
+
+        assertTrue(actual);
+    }
+
+    @Test
+    @DisplayName("Value Test: lots of commas")
+        //try with lots of commas
+    void checkValue_lotscommas() {
+        InputValidator test = new InputValidator();
+
+        String value = "5,000,000,486";
+
+        boolean actual = test.checkValue(value);
+
+        assertTrue(actual);
+    }
+
+    @Test
     @DisplayName("Check Serial Number: Valid")
     //try a valid serial number
     void checkFormatSerial() {

@@ -79,8 +79,6 @@ public class WindowController implements Initializable {
         String userSearch = dm.getSearchDialog("Enter the item name");
         if (!userSearch.equals("cancel search")) {
             ArrayList<Item> foundItems = userInventory.searchName(userSearch);
-            Item searchResultHeader = new Item("", "", "Search Results:");
-            foundItems.add(0, searchResultHeader);
             tableView.setItems(FXCollections.observableArrayList(foundItems));
 
             //Make View All button visible
@@ -102,8 +100,6 @@ public class WindowController implements Initializable {
         String userSearch = dm.getSearchDialog("Enter the item serial number");
         if (!userSearch.equals("cancel search")) {
             ArrayList<Item> foundItems = userInventory.searchSerial(userSearch);
-            Item searchResultHeader = new Item("", "", "Search Results:");
-            foundItems.add(0, searchResultHeader);
             tableView.setItems(FXCollections.observableArrayList(foundItems));
 
             //Make View All button visible
