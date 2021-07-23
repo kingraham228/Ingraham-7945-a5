@@ -3,10 +3,11 @@ package ucf.assignments;
  *  UCF COP3330 Summer 2021 Assignment 5 Solution
  *  Copyright 2021 Kate Ingraham
  */
+
 import javafx.beans.property.SimpleStringProperty;
 
-import java.math.BigDecimal;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 
 
 public class Item {
@@ -60,7 +61,24 @@ public class Item {
 
     //This method standardizes the string for value
     public String formatValue(String userValue){
-        double translate = Double.parseDouble(userValue);
+        //remove any $ or commas the user may add
+        ArrayList<Character> trim = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<userValue.length(); i++){
+            trim.add(userValue.charAt(i));
+        }
+        for(int i=0; i<trim.size();i++){
+            if(!Character.isDigit(trim.get(i))){
+                if(trim.get(i)=='.'){
+                    sb.append(trim.get(i));
+                }
+            }else{
+                sb.append(trim.get(i));
+            }
+
+        }
+        String numbers = sb.toString();
+        double translate = Double.parseDouble(numbers);
         String moneyValue = NumberFormat.getCurrencyInstance().format(translate);
         return moneyValue;
     }

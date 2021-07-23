@@ -106,7 +106,7 @@ class InputValidatorTest {
 
         boolean actual = test.checkValue(value);
 
-        assertFalse(actual);
+        assertTrue(actual);
     }
 
     @Test

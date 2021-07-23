@@ -12,31 +12,35 @@ public class InputValidator {
     //This method checks that value field is a monetary value in US dollars
     public boolean checkValue(String value) {
         //check for length of at least 2 for a valid entry
-        if (value.length() < 2) {
+        if (value.length() < 1) {
             return false;
         } else {
             char[] valueArray = value.toCharArray();
-
-            //check first character for a $
-            if (valueArray[0] != '$') {
-                return false;
-            } else {
                 //check that the remaining characters are numbers or a decimal
                 int decimalCount = 0;
+                int dollarCount = 0;
                 int decimalIndex = -1;
-                for (int i = 1; i < valueArray.length; i++) {
+                for (int i = 0; i < valueArray.length; i++) {
                     if (!Character.isDigit(valueArray[i])) {
                         if (valueArray[i] == '.') {
                             decimalIndex = i;
                             decimalCount++;
                         } else {
-                            return false;
+                            if(valueArray[i] == '$'){
+                                dollarCount++;
+                            }else{
+                                if(valueArray[i]==','){
+                                    //do nothing. Commas will be pulled out in item construction
+                                }else{
+                                    return false;
+                                }
+                            }
                         }
                     }
                 }
 
                 //check number of decimals
-                if(decimalCount>1){
+                if(decimalCount>1||dollarCount>1){
                     return false;
                 }else{
                     //check that there are 2 digits after the decimal if there is one
@@ -46,7 +50,6 @@ public class InputValidator {
                         return true;
                     }
                 }
-            }
         }
     }
 

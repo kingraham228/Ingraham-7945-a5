@@ -47,7 +47,7 @@ public class Inventory {
         }
         //Add an empty item if nothing is found
         if(foundItems.size()<1){
-            Item noResults = new Item("","No search results found.","");
+            Item noResults = new Item("","No search results found.","0");
             foundItems.add(noResults);
         }
         return foundItems;
@@ -73,7 +73,7 @@ public class Inventory {
         }
         //Add an empty item if nothing is found
         if(foundItems.size()<1){
-            Item noResults = new Item("No search results found.","","");
+            Item noResults = new Item("No search results found.","","0");
             foundItems.add(noResults);
         }
         return foundItems;
