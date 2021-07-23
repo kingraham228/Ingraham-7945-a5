@@ -3,16 +3,18 @@ package ucf.assignments;
  *  UCF COP3330 Summer 2021 Assignment 5 Solution
  *  Copyright 2021 Kate Ingraham
  */
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class InputValidatorTest {
 
     @Test
     @DisplayName("Name length test: less than 3")
-    //try a name that is too short
+        //try a name that is too short
     void checkNameLength_lessthree() {
         InputValidator test = new InputValidator();
 
@@ -25,7 +27,7 @@ class InputValidatorTest {
 
     @Test
     @DisplayName("Name length test: 3")
-    //try an edge case
+        //try an edge case
     void checkNameLength_three() {
         InputValidator test = new InputValidator();
 
@@ -38,7 +40,7 @@ class InputValidatorTest {
 
     @Test
     @DisplayName("Name length test: empty")
-    //try an empty name
+        //try an empty name
     void checkNameLength_empty() {
         InputValidator test = new InputValidator();
 
@@ -51,7 +53,7 @@ class InputValidatorTest {
 
     @Test
     @DisplayName("Name length test: very long")
-    //try a name that is too long
+        //try a name that is too long
     void checkNameLength_verylong() {
         InputValidator test = new InputValidator();
 
@@ -85,7 +87,7 @@ class InputValidatorTest {
 
     @Test
     @DisplayName("Value Test: formatted entry")
-    //try a valid entry
+        //try a valid entry
     void checkValue_formatted() {
         InputValidator test = new InputValidator();
 
@@ -98,7 +100,7 @@ class InputValidatorTest {
 
     @Test
     @DisplayName("Value Test: missing $")
-    //try without the $
+        //try without the $
     void checkValue_missing$() {
         InputValidator test = new InputValidator();
 
@@ -215,7 +217,7 @@ class InputValidatorTest {
 
     @Test
     @DisplayName("Check Serial Number: Valid")
-    //try a valid serial number
+        //try a valid serial number
     void checkFormatSerial() {
         InputValidator test = new InputValidator();
 
@@ -280,11 +282,11 @@ class InputValidatorTest {
 
     @Test
     @DisplayName("Check Unique Serial: Unique")
-    //try a serial number that doesn't yet exist
+        //try a serial number that doesn't yet exist
     void checkUniqueSerial() {
         InputValidator test = new InputValidator();
         Inventory testIV = new Inventory();
-        testIV.addItem("Test widget","AAA000AAA0", "$2.99");
+        testIV.addItem("Test widget", "AAA000AAA0", "$2.99");
 
         String serial = "BBB000BBB0";
 
@@ -300,7 +302,7 @@ class InputValidatorTest {
     void checkUniqueSerial_match() {
         InputValidator test = new InputValidator();
         Inventory testIV = new Inventory();
-        testIV.addItem("Test widget","AAA000AAA0", "$2.99");
+        testIV.addItem("Test widget", "AAA000AAA0", "$2.99");
 
         String serial = "AAA000AAA0";
 

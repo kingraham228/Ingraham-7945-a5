@@ -3,18 +3,19 @@ package ucf.assignments;
  *  UCF COP3330 Summer 2021 Assignment 5 Solution
  *  Copyright 2021 Kate Ingraham
  */
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HTMLFilesTest {
 
     @Test
     @DisplayName("Parse HTML Proper Format Test")
-    //Try a properly formatted file
+        //Try a properly formatted file
     void parseHTML() {
         HTMLFiles test = new HTMLFiles();
         ArrayList<String> testFileData = new ArrayList<>();
@@ -29,7 +30,7 @@ class HTMLFilesTest {
         String actual = fileItems.get(0).getName();
         String expected = "item one";
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -49,7 +50,7 @@ class HTMLFilesTest {
         String actual = fileItems.get(1).getSerialNumber();
         String expected = "III222MMMA";
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -69,6 +70,6 @@ class HTMLFilesTest {
         String actual = fileItems.get(1).getValue();
         String expected = "$42.00";
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 }

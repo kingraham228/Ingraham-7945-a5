@@ -47,11 +47,10 @@ public class WindowController implements Initializable {
     @FXML
     private TableView<Item> tableView;
 
-    private Inventory userInventory = new Inventory();
-    private InputValidator iv = new InputValidator();
-    private DialogManager dm = new DialogManager();
-    private FileManager fm = new FileManager();
-    private ObservableList<Item> catalog;
+    private final Inventory userInventory = new Inventory();
+    private final InputValidator iv = new InputValidator();
+    private final DialogManager dm = new DialogManager();
+    private final FileManager fm = new FileManager();
 
     //This method allows the user to open a file and load items into the inventory
     @FXML
@@ -197,7 +196,7 @@ public class WindowController implements Initializable {
 
     //This method updates the items in the tableview.
     public void updateTableView() {
-        catalog = FXCollections.observableArrayList(userInventory.getCatalog());
+        ObservableList<Item> catalog = FXCollections.observableArrayList(userInventory.getCatalog());
         tableView.setItems(catalog);
     }
 

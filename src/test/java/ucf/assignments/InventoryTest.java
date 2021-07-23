@@ -3,10 +3,10 @@ package ucf.assignments;
  *  UCF COP3330 Summer 2021 Assignment 5 Solution
  *  Copyright 2021 Kate Ingraham
  */
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -23,17 +23,17 @@ class InventoryTest {
         String serialNumber = "DEG674WBS9";
         String value = "$4.99";
 
-        test.addItem(name,serialNumber,value);
+        test.addItem(name, serialNumber, value);
 
         String actual = test.getCatalog().get(0).getName();
         String expected = "Test widget.";
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
     @DisplayName("Remove Item Test")
-    //Try removing an item
+        //Try removing an item
     void removeItem() {
         Inventory test = new Inventory();
 
@@ -41,13 +41,13 @@ class InventoryTest {
         String name = "Test widget.";
         String serialNumber = "DEG674WBS9";
         String value = "$4.99";
-        test.addItem(name,serialNumber,value);
+        test.addItem(name, serialNumber, value);
 
         //add item 2
         String name2 = "Widget 2.";
         String serialNumber2 = "DE0074WBS9";
         String value2 = "$785";
-        test.addItem(name2,serialNumber2,value2);
+        test.addItem(name2, serialNumber2, value2);
 
         //remove the first item
         test.removeItem(0);
@@ -56,12 +56,12 @@ class InventoryTest {
         String actual = test.getCatalog().get(0).getName();
         String expected = "Widget 2.";
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
     @DisplayName("Edit Item Test")
-    //Try editing an existing item
+        //Try editing an existing item
     void editItem() {
         Inventory test = new Inventory();
 
@@ -69,26 +69,25 @@ class InventoryTest {
         String name = "Test widget.";
         String serialNumber = "DEG674WBS9";
         String value = "$4.99";
-        test.addItem(name,serialNumber,value);
+        test.addItem(name, serialNumber, value);
 
         //set edited values
         String name2 = "Widget 2.";
         String serialNumber2 = "ZE0074WBS9";
         String value2 = "$785";
 
-        test.editItem(0,name2,serialNumber2,value2);
+        test.editItem(0, name2, serialNumber2, value2);
 
         //test that the item has changed
         String actual = test.getCatalog().get(0).getName();
         String expected = "Widget 2.";
 
-        assertEquals(expected,actual);
-
+        assertEquals(expected, actual);
     }
 
     @Test
     @DisplayName("Search by Name: exact match")
-    //try an exact match search
+        //try an exact match search
     void searchName() {
         Inventory test = new Inventory();
 
@@ -96,13 +95,13 @@ class InventoryTest {
         String name = "Test widget.";
         String serialNumber = "DEG674WBS9";
         String value = "$4.99";
-        test.addItem(name,serialNumber,value);
+        test.addItem(name, serialNumber, value);
 
         //add item 2
         String name2 = "Widget 2.";
         String serialNumber2 = "DE0074WBS9";
         String value2 = "$785";
-        test.addItem(name2,serialNumber2,value2);
+        test.addItem(name2, serialNumber2, value2);
 
         String search = "Test widget.";
 
@@ -118,7 +117,7 @@ class InventoryTest {
         String actual = results.get(0).getName();
         String expected = "Test widget.";
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -131,13 +130,13 @@ class InventoryTest {
         String name = "Test widget.";
         String serialNumber = "DEG674WBS9";
         String value = "$4.99";
-        test.addItem(name,serialNumber,value);
+        test.addItem(name, serialNumber, value);
 
         //add item 2
         String name2 = "Widget 2.";
         String serialNumber2 = "DE0074WBS9";
         String value2 = "$785";
-        test.addItem(name2,serialNumber2,value2);
+        test.addItem(name2, serialNumber2, value2);
 
         String search = "widget";
 
@@ -160,28 +159,28 @@ class InventoryTest {
         String name = "Test widget.";
         String serialNumber = "DEG674WBS9";
         String value = "$4.99";
-        test.addItem(name,serialNumber,value);
+        test.addItem(name, serialNumber, value);
 
         //add item 2
         String name2 = "Widget 2.";
         String serialNumber2 = "DE0074WBS9";
         String value2 = "$785";
-        test.addItem(name2,serialNumber2,value2);
+        test.addItem(name2, serialNumber2, value2);
 
         String search = "shady";
 
         ArrayList<Item> results = test.searchName(search);
 
         //Check no result
-        String actual = results.get(0).getName();
-        String expected = "No search results found.";
+        String actual = results.get(0).getSerialNumber();
+        String expected = "NO SEARCH RESULTS FOUND.";
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
     @DisplayName("Search by Serial: Exact match")
-    //Try an exact match
+        //Try an exact match
     void searchSerial() {
         Inventory test = new Inventory();
 
@@ -189,13 +188,13 @@ class InventoryTest {
         String name = "Test widget.";
         String serialNumber = "DEG674WBS9";
         String value = "$4.99";
-        test.addItem(name,serialNumber,value);
+        test.addItem(name, serialNumber, value);
 
         //add item 2
         String name2 = "Widget 2.";
         String serialNumber2 = "B7S9981140";
         String value2 = "$785";
-        test.addItem(name2,serialNumber2,value2);
+        test.addItem(name2, serialNumber2, value2);
 
         String search = "B7S9981140";
 
@@ -211,7 +210,7 @@ class InventoryTest {
         String actual = results.get(0).getSerialNumber();
         String expected = "B7S9981140";
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -224,13 +223,13 @@ class InventoryTest {
         String name = "Test widget.";
         String serialNumber = "DEG674WBS9";
         String value = "$4.99";
-        test.addItem(name,serialNumber,value);
+        test.addItem(name, serialNumber, value);
 
         //add item 2
         String name2 = "Widget 2.";
         String serialNumber2 = "B7S9981140";
         String value2 = "$785";
-        test.addItem(name2,serialNumber2,value2);
+        test.addItem(name2, serialNumber2, value2);
 
         String search = "7";
 
@@ -253,13 +252,13 @@ class InventoryTest {
         String name = "Test widget.";
         String serialNumber = "DEG674WBS9";
         String value = "$4.99";
-        test.addItem(name,serialNumber,value);
+        test.addItem(name, serialNumber, value);
 
         //add item 2
         String name2 = "Widget 2.";
         String serialNumber2 = "B7S9981140";
         String value2 = "$785";
-        test.addItem(name2,serialNumber2,value2);
+        test.addItem(name2, serialNumber2, value2);
 
         String search = "0000000000";
 
@@ -269,6 +268,6 @@ class InventoryTest {
         String actual = results.get(0).getSerialNumber();
         String expected = "NO SEARCH RESULTS FOUND.";
 
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 }

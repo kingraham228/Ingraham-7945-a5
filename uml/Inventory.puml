@@ -10,8 +10,6 @@ class WindowController{
 - dm: DialogManager
 - fm: FileManager
 
-- catalog: ObservableList<Item>
-
 +mOpen()
 +mSave()
 +mSearchName()
@@ -33,7 +31,6 @@ class DialogManager{
 }
 
 class FileManager{
--iv: InputValidator
 -html: HTMLFiles
 -tsv: TSVFiles
 +saveInventory()
@@ -53,16 +50,15 @@ class Inventory{
 }
 
 class Item{
--name: String
--serialNumber: String
--value: BigDecimal
+-name: SimpleStringProperty
+-serialNumber: SimpleStringProperty
+-value: SimpleStringProperty
 
-+setName()
-+setSerialNumber()
-+setValue()
 +getName()
++setName()
 +getSerialNumber()
 +getValue()
++setValue()
 +formatValue()
 }
 
@@ -77,6 +73,7 @@ class HTMLFiles{
 +formatHTMLString()
 +formatHTMLHeading()
 +formatHTMLFooter()
++parseHTML()
 }
 
 class TSVFiles{
@@ -91,8 +88,7 @@ WindowController o-- DialogManager
 WindowController o-- FileManager
 WindowController o-- Inventory
 Inventory *-- Item
-WindowController -- InputValidator
-FileManager --InputValidator
+WindowController o-- InputValidator
 FileManager *-- HTMLFiles
 FileManager *-- TSVFiles
 @enduml

@@ -3,22 +3,23 @@ package ucf.assignments;
  *  UCF COP3330 Summer 2021 Assignment 5 Solution
  *  Copyright 2021 Kate Ingraham
  */
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ItemTest {
 
     @Test
     @DisplayName("Number Formatting: add $")
-    //try without a dollar sign
+        //try without a dollar sign
     void formatValue() {
         String value = "2.99";
-        Item test = new Item("test item","000sssuuu8",value);
+        Item test = new Item("test item", "000sssuuu8", value);
         String actual = test.getValue();
         String expected = "$2.99";
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -26,9 +27,9 @@ class ItemTest {
         //try with a dollar sign
     void formatValue_with$() {
         String value = "$2.99";
-        Item test = new Item("test item","000sssuuu8",value);
+        Item test = new Item("test item", "000sssuuu8", value);
         String actual = test.getValue();
         String expected = "$2.99";
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
 }
