@@ -13,12 +13,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class InputValidatorTest {
 
     @Test
-    @DisplayName("Name length test: less than 3")
+    @DisplayName("Name length test: less than 2")
         //try a name that is too short
-    void checkNameLength_lessthree() {
+    void checkNameLength_lesstwo() {
         InputValidator test = new InputValidator();
 
-        String name = "it";
+        String name = "i";
 
         boolean actual = test.checkNameLength(name);
 
@@ -26,12 +26,12 @@ class InputValidatorTest {
     }
 
     @Test
-    @DisplayName("Name length test: 3")
+    @DisplayName("Name length test: 2")
         //try an edge case
-    void checkNameLength_three() {
+    void checkNameLength_two() {
         InputValidator test = new InputValidator();
 
-        String name = "dog";
+        String name = "it";
 
         boolean actual = test.checkNameLength(name);
 

@@ -68,7 +68,7 @@ public class InputValidator {
 
     //This method checks if the inventory name is between 2 and 256 characters
     public boolean checkNameLength(String name) {
-        //interpreting "between" as not including 2 and 256
-        return name.length() >= 3 && name.length() <= 255;
+        //interpreting "between (inclusive)" as including 2 and 256
+        return name.length() >= 2 && name.length() <= 256;
     }
 }
