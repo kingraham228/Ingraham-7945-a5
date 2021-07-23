@@ -33,6 +33,7 @@ class DialogManager{
 }
 
 class FileManager{
+-iv: InputValidator
 +saveInventory()
 +formatTSV()
 +loadInventory()
@@ -76,5 +77,6 @@ WindowController o-- DialogManager
 WindowController o-- FileManager
 WindowController o-- Inventory
 Inventory *-- Item
-WindowController o-- InputValidator
+WindowController -- InputValidator
+FileManager --InputValidator
 @enduml

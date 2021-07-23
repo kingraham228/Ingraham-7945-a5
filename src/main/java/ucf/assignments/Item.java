@@ -61,25 +61,25 @@ public class Item {
 
     //This method standardizes the string for value
     public String formatValue(String userValue){
-        //remove any $ or commas the user may add
         ArrayList<Character> trim = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
         for(int i=0; i<userValue.length(); i++){
             trim.add(userValue.charAt(i));
         }
-        for(int i=0; i<trim.size();i++){
-            if(!Character.isDigit(trim.get(i))){
-                if(trim.get(i)=='.'){
-                    sb.append(trim.get(i));
+        for (Character character : trim) {
+            //remove any $ or commas the user may add. Keep decimal point.
+            if (!Character.isDigit(character)) {
+                if (character == '.') {
+                    sb.append(character);
                 }
-            }else{
-                sb.append(trim.get(i));
+            } else {
+                sb.append(character);
             }
 
         }
         String numbers = sb.toString();
+        //format as a money string
         double translate = Double.parseDouble(numbers);
-        String moneyValue = NumberFormat.getCurrencyInstance().format(translate);
-        return moneyValue;
+        return NumberFormat.getCurrencyInstance().format(translate);
     }
 }
