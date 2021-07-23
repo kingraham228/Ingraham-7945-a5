@@ -86,7 +86,9 @@ public class WindowController implements Initializable {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Inventory");
         FileChooser.ExtensionFilter txtFilter = new FileChooser.ExtensionFilter("Tab-Separated Value  (*.txt)","*.txt");
+        FileChooser.ExtensionFilter htmlFilter = new FileChooser.ExtensionFilter("HTML  (*.html)","*.html");
         fileChooser.getExtensionFilters().add(txtFilter);
+        fileChooser.getExtensionFilters().add(htmlFilter);
         File file = fileChooser.showSaveDialog(null);
         if (file != null) {
             String filePath = file.getPath();
