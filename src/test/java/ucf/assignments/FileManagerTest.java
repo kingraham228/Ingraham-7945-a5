@@ -117,7 +117,24 @@ class FileManagerTest {
         String filePath = "myinventory.html";
 
         fm.saveInventory(test.getCatalog(), filePath, "html");
-        //visually check the txt file output
+        //visually check the html file output
+    }
+
+    @Test
+    @DisplayName("Save JSON file test")
+    //Try saving a list to json
+    void saveInventory() {
+        FileManager fm = new FileManager();
+        //create a test inventory
+        Inventory test = new Inventory();
+        test.addItem("item one", "lllwwwiii2", "$3444");
+        test.addItem("item two", "iii222mmma", "$42");
+        test.addItem("item three", "000222jjj4", "$3.99");
+
+        String filePath = "myinventory.json";
+
+        fm.saveInventory(test.getCatalog(), filePath, "json");
+        //visually check the json file output
     }
 
     @Test
@@ -139,4 +156,5 @@ class FileManagerTest {
 
         assertEquals(expected, actual);
     }
+
 }

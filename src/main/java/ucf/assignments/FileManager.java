@@ -13,6 +13,7 @@ import java.util.*;
 public class FileManager {
     HTMLFiles html = new HTMLFiles();
     TSVFiles tsv = new TSVFiles();
+    JSONFiles json = new JSONFiles();
 
     //This method saves the inventory to a file
     public void saveInventory(ArrayList<Item> inventory, String filePath, String fileExtension) {
@@ -24,22 +25,36 @@ public class FileManager {
                     output.format(header);
                 }
             }
+            if(fileExtension.equalsIgnoreCase("json")){
+                output.format(json.formatJSONHeader());
+            }
+
             //print each item in the inventory to the file
-            for (Item inventoryItem : inventory) {
-                String name = inventoryItem.getName();
-                String serial = inventoryItem.getSerialNumber();
-                String value = inventoryItem.getValue();
+            for (int i=0; i< inventory.size(); i++) {
+                String name = inventory.get(i).getName();
+                String serial = inventory.get(i).getSerialNumber();
+                String value = inventory.get(i).getValue();
 
                 //TSV
                 if (fileExtension.equalsIgnoreCase("txt")) {
                     String item = tsv.formatTSV(value, serial, name);
                     output.format(item);
                 } else {
-
                     //HTML
                     if (fileExtension.equalsIgnoreCase("html")) {
                         String item = html.formatHTMLString(value, serial, name);
                         output.format(item);
+                    } else{
+                        //JSON
+                        if(fileExtension.equalsIgnoreCase("json")){
+                            //account for commas between all but the last item
+                            String item = json.formatJSONString(value,serial,name);
+                            if(i<(inventory.size())-1){
+                                output.format(item+",\n");
+                            }else{
+                                output.format(item+"\n");
+                            }
+                        }
                     }
                 }
             }
@@ -49,6 +64,9 @@ public class FileManager {
                 for (String footer : footers) {
                     output.format(footer);
                 }
+            }
+            if(fileExtension.equalsIgnoreCase("json")){
+                output.format(json.formatJSONFooter());
             }
         } catch (SecurityException | FileNotFoundException | FormatterClosedException e) {
             e.printStackTrace();
