@@ -3,18 +3,19 @@ package ucf.assignments;
  *  UCF COP3330 Summer 2021 Assignment 5 Solution
  *  Copyright 2021 Kate Ingraham
  */
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class JSONFilesTest {
 
     @Test
     @DisplayName("Parse JSON: First Element check, name")
-    //try parsing a properly formatted file
+        //try parsing a properly formatted file
     void parseJSON() {
         JSONFiles test = new JSONFiles();
         ArrayList<String> testFileData = new ArrayList<>();

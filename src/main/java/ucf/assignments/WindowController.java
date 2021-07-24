@@ -65,7 +65,7 @@ public class WindowController implements Initializable {
             ArrayList<Item> fileItems = fm.loadInventory(filePath, fileExtension);
             //send an error if the parser did not add any items
             if (fileItems.size() < 1) {
-                dm.reportError("No items loaded. Please check the formatting of the file you are opening.\nSupported formats are TSV and HTML.");
+                dm.reportError("No items loaded. Please check the formatting of the file you are opening.\nSupported formats are TSV, HTML, and JSON.");
             } else {
                 //check for unique serial numbers
                 for (Item fileItem : fileItems) {

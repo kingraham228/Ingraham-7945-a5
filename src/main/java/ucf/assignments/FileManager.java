@@ -98,6 +98,9 @@ public class FileManager {
         if (fileExtension.equalsIgnoreCase("html")) {
             return html.parseHTML(fileData);
         }
+        if (fileExtension.equalsIgnoreCase("json")){
+            return json.parseJSON(fileData);
+        }
         return fileItems;
     }
 }

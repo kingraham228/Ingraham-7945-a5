@@ -86,6 +86,7 @@ class JSONFIles{
 +formatJSONString()
 +formatJSONHeader()
 +formatJSONFooter()
++parseJSON()
 }
 
 

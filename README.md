@@ -23,9 +23,9 @@ To leave the search result view, press the "View All" button.
 ## Saving your Inventory
 To save your inventory, click on the "File" menu and select "Save as." 
 Choose your file name and type in the dialog box and press "Save." 
-Supported file types include tab-separated values (TSV) and HTML files. 
+Supported file types include tab-separated values (TSV), HTML, and JSON files. 
 ## Loading a Saved Inventory
 To load a previously saved inventory, click on the "File" menu and select "Open." 
 Choose your file and click "OK." 
 Note that if you already have items in your inventory, the new items from the file will be added to the existing list. 
-Supported file types include TSV and HTML files created by this application. 
+Supported file types include TSV, HTML, and JSON files created by this application. 
