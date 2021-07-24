@@ -33,6 +33,7 @@ class DialogManager{
 class FileManager{
 -html: HTMLFiles
 -tsv: TSVFiles
+-json: JSONFIles
 +saveInventory()
 +loadInventory()
 +parseFileData()
@@ -81,6 +82,12 @@ class TSVFiles{
 +parseTSV()
 }
 
+class JSONFIles{
++formatJSONString()
++formatJSONHeader()
++formatJSONFooter()
+}
+
 
 org.javafx.Application <|-- App
 App -- WindowController
@@ -91,4 +98,5 @@ Inventory *-- Item
 WindowController o-- InputValidator
 FileManager *-- HTMLFiles
 FileManager *-- TSVFiles
+FileManager *-- JSONFIles
 @enduml

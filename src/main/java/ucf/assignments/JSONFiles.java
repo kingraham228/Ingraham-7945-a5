@@ -9,7 +9,7 @@ public class JSONFiles {
 
     //This method formats output for JSON items
     public String formatJSONString(String value, String serial, String name){
-        return String.format("\t\t{\"value\" : \"%s\", \"serial)\" : \"%s\", \"name\" : \"%s\" }",value,serial,name);
+        return String.format("\t\t{\"value\" : \"%s\", \"serial\" : \"%s\", \"name\" : \"%s\" }",value,serial,name);
     }
 
     //This method formats the beginning header for a JSON file
