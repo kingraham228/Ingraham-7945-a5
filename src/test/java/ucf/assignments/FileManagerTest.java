@@ -3,6 +3,7 @@ package ucf.assignments;
  *  UCF COP3330 Summer 2021 Assignment 5 Solution
  *  Copyright 2021 Kate Ingraham
  */
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+//This class tests saving, loading, and the data parsing function
 class FileManagerTest {
 
     @Test
@@ -122,7 +124,7 @@ class FileManagerTest {
 
     @Test
     @DisplayName("Save JSON file test")
-    //Try saving a list to json
+        //Try saving a list to json
     void saveInventory() {
         FileManager fm = new FileManager();
         //create a test inventory

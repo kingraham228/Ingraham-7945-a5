@@ -15,6 +15,7 @@ public class Item {
     private SimpleStringProperty serialNumber;
     private SimpleStringProperty value;
 
+    //This method constructs an item with appropriately formatted serial number and value
     public Item(String name, String serialNumber, String value) {
         serialNumber = serialNumber.toUpperCase();
         value = formatValue(value);

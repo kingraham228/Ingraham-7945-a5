@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+//This class tests the input validation functions for name, value, and serial number
 class InputValidatorTest {
 
     @Test

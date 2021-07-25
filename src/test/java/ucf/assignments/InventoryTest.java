@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+//This class tests the catalog management and search functions
 class InventoryTest {
 
     @Test

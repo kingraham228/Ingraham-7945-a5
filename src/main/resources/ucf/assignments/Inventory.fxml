@@ -14,22 +14,16 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.WindowController">
    <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-                  <MenuItem mnemonicParsing="false" onAction="#mOpen" text="Open" />
-              <MenuItem mnemonicParsing="false" onAction="#mSave" text="Save as..." />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Search">
-            <items>
-                  <MenuItem mnemonicParsing="false" onAction="#mSearchName" text="Search by Name" />
-              <MenuItem mnemonicParsing="false" onAction="#mSearchSerial" text="Search by Serial Number" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
+       <MenuBar BorderPane.alignment="CENTER">
+           <Menu mnemonicParsing="false" text="File">
+               <MenuItem mnemonicParsing="false" onAction="#mOpen" text="Open"/>
+               <MenuItem mnemonicParsing="false" onAction="#mSave" text="Save as..."/>
+           </Menu>
+           <Menu mnemonicParsing="false" text="Search">
+               <MenuItem mnemonicParsing="false" onAction="#mSearchName" text="Search by Name"/>
+               <MenuItem mnemonicParsing="false" onAction="#mSearchSerial" text="Search by Serial Number"/>
+           </Menu>
+       </MenuBar>
    </top>
    <center>
       <TableView fx:id="tableView" editable="true" prefHeight="375.0" prefWidth="442.0" BorderPane.alignment="CENTER">
@@ -44,63 +38,59 @@
       <VBox prefHeight="355.0" prefWidth="20.0" BorderPane.alignment="CENTER" />
    </left>
    <right>
-      <VBox prefHeight="375.0" prefWidth="116.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox prefHeight="106.0" prefWidth="116.0">
-               <children>
-                  <Button fx:id="idViewAllButton" mnemonicParsing="false" onAction="#bViewAll" prefHeight="25.0" prefWidth="93.0" text="View All">
-                     <HBox.margin>
-                        <Insets bottom="20.0" left="15.0" right="20.0" top="60.0" />
-                     </HBox.margin>
-                  </Button>
-               </children></HBox>
-            <HBox prefHeight="79.0" prefWidth="116.0">
-               <children>
-                  <Button fx:id="idEditButton" mnemonicParsing="false" onAction="#bEdit" prefHeight="25.0" prefWidth="93.0" text="Edit Item">
-                     <HBox.margin>
-                        <Insets bottom="20.0" left="15.0" right="20.0" top="30.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-            </HBox>
-            <HBox prefHeight="85.0" prefWidth="116.0">
-               <children>
-                  <Button fx:id="idDeleteButton" mnemonicParsing="false" onAction="#bDeleteItem" prefHeight="25.0" prefWidth="93.0" text="Delete Item">
-                     <HBox.margin>
-                        <Insets bottom="20.0" left="15.0" right="20.0" top="30.0" />
-                     </HBox.margin>
-                  </Button>
-               </children></HBox>
-         </children>
-      </VBox>
+       <VBox prefHeight="375.0" prefWidth="116.0" BorderPane.alignment="CENTER">
+           <HBox prefHeight="106.0" prefWidth="116.0">
+               <Button fx:id="idViewAllButton" mnemonicParsing="false" onAction="#bViewAll" prefHeight="25.0"
+                       prefWidth="93.0" text="View All">
+                   <HBox.margin>
+                       <Insets bottom="20.0" left="15.0" right="20.0" top="60.0"/>
+                   </HBox.margin>
+               </Button>
+           </HBox>
+           <HBox prefHeight="79.0" prefWidth="116.0">
+               <Button fx:id="idEditButton" mnemonicParsing="false" onAction="#bEdit" prefHeight="25.0"
+                       prefWidth="93.0" text="Edit Item">
+                   <HBox.margin>
+                       <Insets bottom="20.0" left="15.0" right="20.0" top="30.0"/>
+                   </HBox.margin>
+               </Button>
+           </HBox>
+           <HBox prefHeight="85.0" prefWidth="116.0">
+               <Button fx:id="idDeleteButton" mnemonicParsing="false" onAction="#bDeleteItem" prefHeight="25.0"
+                       prefWidth="93.0" text="Delete Item">
+                   <HBox.margin>
+                       <Insets bottom="20.0" left="15.0" right="20.0" top="30.0"/>
+                   </HBox.margin>
+               </Button>
+           </HBox>
+       </VBox>
    </right>
    <bottom>
-      <HBox prefHeight="65.0" prefWidth="552.0" styleClass="hbox" stylesheets="@InventoryStyle.css" BorderPane.alignment="CENTER">
-         <children>
-            <TextField fx:id="tfValue" promptText="Enter Value">
-               <HBox.margin>
-                  <Insets bottom="20.0" left="22.0" right="20.0" top="15.0" />
-               </HBox.margin>
-            </TextField>
-            <TextField fx:id="tfSerial" promptText="Enter Serial Number">
-               <HBox.margin>
-                  <Insets bottom="20.0" right="20.0" top="15.0" />
-               </HBox.margin>
-            </TextField>
-            <TextField fx:id="tfName" promptText="Enter Name">
-               <HBox.margin>
-                  <Insets bottom="20.0" right="20.0" top="15.0" />
-               </HBox.margin>
-            </TextField>
-            <VBox prefHeight="65.0" prefWidth="146.0">
-               <children>
-                  <Button fx:id="idAddItemButton" alignment="CENTER" mnemonicParsing="false" onAction="#bAddItem" prefWidth="93.0" text="Add Item">
-                     <VBox.margin>
-                        <Insets bottom="20.0" right="20.0" top="15.0" />
-                     </VBox.margin>
-                  </Button>
-               </children>
-            </VBox>
-         </children></HBox>
+       <HBox prefHeight="65.0" prefWidth="552.0" styleClass="hbox" stylesheets="@InventoryStyle.css"
+             BorderPane.alignment="CENTER">
+           <TextField fx:id="tfValue" promptText="Enter Value">
+              <HBox.margin>
+                  <Insets bottom="20.0" left="22.0" right="20.0" top="15.0"/>
+              </HBox.margin>
+           </TextField>
+           <TextField fx:id="tfSerial" promptText="Enter Serial Number">
+              <HBox.margin>
+                  <Insets bottom="20.0" right="20.0" top="15.0"/>
+              </HBox.margin>
+           </TextField>
+           <TextField fx:id="tfName" promptText="Enter Name">
+              <HBox.margin>
+                  <Insets bottom="20.0" right="20.0" top="15.0"/>
+              </HBox.margin>
+           </TextField>
+           <VBox prefHeight="65.0" prefWidth="146.0">
+               <Button fx:id="idAddItemButton" alignment="CENTER" mnemonicParsing="false" onAction="#bAddItem"
+                       prefWidth="93.0" text="Add Item">
+                   <VBox.margin>
+                       <Insets bottom="20.0" right="20.0" top="15.0"/>
+                   </VBox.margin>
+               </Button>
+           </VBox>
+       </HBox>
    </bottom>
 </BorderPane>

@@ -11,7 +11,7 @@ public class InputValidator {
 
     //This method checks that value field is a monetary value in US dollars
     public boolean checkValue(String value) {
-        //check for length of at least 2 for a valid entry
+        //check for length of at least 1 for a valid entry
         if (value.length() < 1) {
             return false;
         } else {
@@ -34,7 +34,7 @@ public class InputValidator {
                     }
                 }
             }
-            //check number of decimals
+            //check number of decimals and dollar signs
             return decimalCount <= 1 && dollarCount <= 1;
         }
     }

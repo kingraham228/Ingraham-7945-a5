@@ -21,9 +21,13 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-
+//This class manages user interaction through the GUI
 public class WindowController implements Initializable {
 
+    private final Inventory userInventory = new Inventory();
+    private final InputValidator iv = new InputValidator();
+    private final DialogManager dm = new DialogManager();
+    private final FileManager fm = new FileManager();
     @FXML
     public TextField tfValue;
     @FXML
@@ -47,11 +51,6 @@ public class WindowController implements Initializable {
     @FXML
     private TableView<Item> tableView;
 
-    private final Inventory userInventory = new Inventory();
-    private final InputValidator iv = new InputValidator();
-    private final DialogManager dm = new DialogManager();
-    private final FileManager fm = new FileManager();
-
     //This method allows the user to open a file and load items into the inventory
     @FXML
     public void mOpen() {
@@ -65,7 +64,8 @@ public class WindowController implements Initializable {
             ArrayList<Item> fileItems = fm.loadInventory(filePath, fileExtension);
             //send an error if the parser did not add any items
             if (fileItems.size() < 1) {
-                dm.reportError("No items loaded. Please check the formatting of the file you are opening.\nSupported formats are TSV, HTML, and JSON.");
+                dm.reportError("No items loaded. Please check the formatting of the file you are opening." +
+                        "\nSupported formats are TSV, HTML, and JSON.");
             } else {
                 //check for unique serial numbers
                 for (Item fileItem : fileItems) {
@@ -222,7 +222,7 @@ public class WindowController implements Initializable {
                 //check for duplicate serial number
                 serialValid = iv.checkUniqueSerial(userInventory.getCatalog(), editedItem.getSerialNumber());
                 if (!serialValid) {
-                    //send a duplicate serial number error and rollback catalog update
+                    //send a duplicate serial number error and rollback catalog update if it is not unique
                     dm.reportError("Item serial numbers must be unique.");
                     userInventory.editItem(index, oldItem.getName(), oldItem.getSerialNumber(), oldItem.getValue());
                 } else {

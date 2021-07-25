@@ -11,9 +11,9 @@ import java.util.*;
 
 //This class manages saving and loading files
 public class FileManager {
-    HTMLFiles html = new HTMLFiles();
-    TSVFiles tsv = new TSVFiles();
-    JSONFiles json = new JSONFiles();
+    private final HTMLFiles html = new HTMLFiles();
+    private final TSVFiles tsv = new TSVFiles();
+    private final JSONFiles json = new JSONFiles();
 
     //This method saves the inventory to a file
     public void saveInventory(ArrayList<Item> inventory, String filePath, String fileExtension) {

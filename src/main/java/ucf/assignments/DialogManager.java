@@ -54,7 +54,6 @@ public class DialogManager {
         search.setHeaderText("Search Item Inventory");
         Optional<String> userSearch = search.showAndWait();
         return userSearch.orElse("cancel search");
-
     }
 
     //This method creates a dialog box for editing an item

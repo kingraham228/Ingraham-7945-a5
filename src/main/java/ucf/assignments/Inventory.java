@@ -6,7 +6,7 @@ package ucf.assignments;
 
 import java.util.ArrayList;
 
-//This class manages items
+//This class manages a catalog of items
 public class Inventory {
     ArrayList<Item> catalog = new ArrayList<>();
 
